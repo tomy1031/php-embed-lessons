@@ -117,11 +117,14 @@ TechEducate/
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
     "types": ["vitest/globals", "node"]
   },
   "include": ["src", "build", "test", "tests"]
 }
 ```
+> 注: `baseUrl`+`paths` は `@/` を `tsc` でも解決させるため（Vite/Vitestのaliasと一致）。Task 9のレビューで追加。
 
 - [ ] **Step 3: vite.config.ts を作成（MPA・base相対・wasm配慮）**
 
