@@ -17,3 +17,235 @@ nav.course-nav { display: flex; justify-content: space-between; gap: .5rem; marg
   padding-top: 1rem; border-top: 1px solid #e0e4ec; font-size: .95rem; }
 nav.course-nav a { text-decoration: none; color: #2563eb; }
 nav.course-nav a.toc { color: #8a94a6; }
+
+/* =========================================================================
+   RPG 没入感テーマ（A01）— すべて body.rpg 配下に限定。
+   A02/A03 の現行見た目を壊さないため、ここより上の既存ルールは変更しない。
+   ========================================================================= */
+body.rpg {
+  --bg-deep: #1b1530;       /* 夜空・ページ背景 */
+  --bg-panel: #f4e7c9;      /* 羊皮紙 */
+  --bg-panel-real: #efdcb6; /* 実戦パートのやや濃い羊皮紙 */
+  --ink: #3a2a18;           /* 本文インク */
+  --ink-soft: #6b5230;      /* 補助テキスト */
+  --frame: #c9a24b;         /* 金枠 */
+  --frame-dark: #7a5a1e;
+  --accent-magic: #6f5bd0;  /* 概念① */
+  --accent-battle: #b4452f; /* 実戦② */
+  --hp: #3fb55b;
+  --mp: #3f7ad6;
+
+  /* 夜空＋微細な星/魔法陣パターン（opacity 控えめ） */
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.06) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.05) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 45% 85%, rgba(255,255,255,.05) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 90% 20%, rgba(201,162,75,.06) 0 1.5px, transparent 2px);
+  background-size: 320px 320px, 260px 260px, 400px 400px, 500px 500px;
+  min-height: 100vh;
+}
+
+/* 羊皮紙カード＋金二重枠 */
+body.rpg .lesson {
+  background: var(--bg-panel);
+  color: var(--ink);
+  border: 3px solid var(--frame);
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.8rem 1.6rem 3rem;
+  box-shadow:
+    0 0 0 6px var(--bg-panel),
+    0 0 0 8px var(--frame-dark),
+    0 12px 40px rgba(0,0,0,.5);
+}
+body.rpg .lesson p,
+body.rpg .lesson li { color: var(--ink); }
+body.rpg .lesson code {
+  background: rgba(122,90,30,.14);
+  color: #5a3d12;
+  border-radius: 3px;
+  padding: 0 .25em;
+}
+
+/* h1：QUEST ラベル＋金二重下線。見出しに装飾セリフ可、本文はゴシック維持 */
+body.rpg .lesson h1 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Georgia", serif;
+  color: var(--frame-dark);
+  text-align: center;
+  border-bottom: 3px double var(--frame);
+  padding-bottom: .5rem;
+}
+body.rpg .lesson h1::before {
+  content: "❖ QUEST A-01 ❖";
+  display: block;
+  font-size: .8rem;
+  letter-spacing: .3em;
+  color: var(--frame);
+  margin-bottom: .3rem;
+}
+body.rpg .lesson h2 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Georgia", serif;
+  color: var(--frame-dark);
+  border-bottom: 2px solid var(--frame);
+}
+
+/* クエスト目標の巻物 */
+body.rpg .lesson .goals {
+  background: #fbf2dd;
+  border: 1px solid var(--frame);
+  border-left: 5px solid var(--frame);
+  border-radius: 6px;
+}
+body.rpg .lesson .goals b { display: none; }
+body.rpg .lesson .goals::before {
+  content: "📜 クエスト目標";
+  display: block;
+  font-weight: 700;
+  color: var(--frame-dark);
+  margin-bottom: .3rem;
+}
+body.rpg .lesson .goals ul { list-style: none; padding-left: .2rem; }
+body.rpg .lesson .goals li { position: relative; padding-left: 1.2rem; }
+body.rpg .lesson .goals li::before {
+  content: "▸"; position: absolute; left: 0; color: var(--frame); font-weight: 700;
+}
+
+/* ① まなぶ = 魔法の書 / ② じっせん = 実戦 */
+body.rpg .lesson .part {
+  background: #fbf2dd;
+  border: 1px solid var(--frame);
+  border-left: 6px solid var(--accent-magic);
+  border-radius: 6px;
+}
+body.rpg .lesson .part.real {
+  background: var(--bg-panel-real);
+  border-left: 6px solid var(--accent-battle);
+}
+
+/* タグ：リボン/プレート風 */
+body.rpg .lesson .tag {
+  background: var(--accent-magic);
+  color: #fff;
+  border-radius: 3px 3px 3px 0;
+  box-shadow: 2px 2px 0 var(--frame-dark);
+  letter-spacing: .04em;
+}
+body.rpg .lesson .part.real .tag {
+  background: var(--accent-battle);
+}
+
+/* 賢者のヒントの巻物 */
+body.rpg .lesson .callout {
+  background: #fbf2dd;
+  border: 1px solid var(--frame);
+  border-left: 5px solid var(--accent-magic);
+  border-radius: 6px;
+  color: var(--ink);
+}
+
+/* figure：額縁化（金縁＋内マット＋影）。img未生成でも崩れない最小高さ */
+body.rpg .lesson figure {
+  background: #fff8e8;
+  border: 2px solid var(--frame);
+  padding: .7rem;
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+body.rpg .lesson figure img {
+  border: 6px solid #fff;
+  outline: 2px solid var(--frame-dark);
+  border-radius: 2px;
+  min-height: 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+body.rpg .lesson figcaption { color: var(--ink-soft); }
+
+/* php-run：ダークコンソール＋▶じっこう バー */
+body.rpg .php-run {
+  border: 2px solid var(--frame-dark);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.4);
+}
+body.rpg .php-run::before {
+  content: "▶ じっこう";
+  display: block;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  color: #cdd6f4;
+  background: #15131f;
+  padding: .25rem .8rem;
+  border-bottom: 1px solid #2a2740;
+}
+body.rpg .php-run .code { background: #1e1b2e; }
+
+/* php-exercise：バトル枠（赤金） */
+body.rpg .php-exercise {
+  border: 2px solid var(--accent-battle);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.4);
+}
+body.rpg .php-exercise .controls {
+  background: #2a1411;
+  border-top: 1px solid var(--frame-dark);
+}
+body.rpg .php-exercise .run {
+  background: var(--accent-battle);
+  box-shadow: 0 0 0 1px var(--frame) inset;
+}
+/* 正解：金色に発光＋達成演出（1回のみ） */
+body.rpg .php-exercise .result.pass {
+  color: var(--frame);
+  text-shadow: 0 0 8px rgba(201,162,75,.9);
+  animation: rpg-quest-clear .9s ease-out 1;
+}
+body.rpg .php-exercise .result.pass::after {
+  content: " 📜 クエスト達成！";
+  color: var(--frame-dark);
+  text-shadow: none;
+}
+@keyframes rpg-quest-clear {
+  0%   { transform: scale(.85); opacity: .2; }
+  60%  { transform: scale(1.12); }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* 不正解：赤く1回だけ揺れ＋もう一度 */
+body.rpg .php-exercise .result.fail {
+  color: var(--accent-battle);
+  animation: rpg-shake .4s ease-in-out 1;
+}
+body.rpg .php-exercise .result.fail::after {
+  content: " ⚠ もう一度";
+}
+@keyframes rpg-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* course-nav：道標/石碑風 */
+body.rpg nav.course-nav {
+  border-top: 3px double var(--frame);
+  color: var(--ink);
+}
+body.rpg nav.course-nav a {
+  color: var(--frame-dark);
+  font-weight: 700;
+  background: #fbf2dd;
+  border: 1px solid var(--frame);
+  border-radius: 4px;
+  padding: .3rem .7rem;
+  box-shadow: 0 2px 0 var(--frame-dark);
+}
+body.rpg nav.course-nav a.toc {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+/* 動きを抑えたいユーザーへの配慮 */
+@media (prefers-reduced-motion: reduce) {
+  body.rpg .php-exercise .result.pass,
+  body.rpg .php-exercise .result.fail { animation: none; }
+}

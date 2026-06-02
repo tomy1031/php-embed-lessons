@@ -6,87 +6,211 @@
   <title>A01 変数とデータ型 | RPGで学ぶPHP</title>
   <script type="module" src="/src/index.ts"></script>
 </head>
-<body>
+<body class="rpg">
   <article class="lesson">
     <h1>A01 変数とデータ型</h1>
+
+    <!-- ステップ0 — 章扉 -->
     <figure>
-      <img src="../assets/img/a01/a01-status.png" alt="勇者のステータス画面（名前・レベル・HP・MP）" />
-      <figcaption>勇者のステータスは「変数」でできている</figcaption>
+      <img src="../assets/img/a01/a01-hero.png" alt="夜明けの草原に立つ勇者アレンの後ろ姿。遠くに城と山、傍に淡く光るステータス板" />
+      <figcaption>冒険のはじまり。勇者のステータスは「冒険者カードの記入欄」＝変数でできている。</figcaption>
     </figure>
+
     <div class="goals">
       <b>このレッスンのねらい</b>
       <ul>
-        <li>変数は「値の入れ物」だと分かる</li>
-        <li><code>$名前 = 値;</code> で作れる</li>
-        <li>int / float / string / bool / null の型を知る</li>
+        <li><code>echo</code> で画面に文字を出せる</li>
+        <li>変数（値の箱）を作って使える</li>
+        <li>型（文字・数・true/false）がなんとなく分かる</li>
       </ul>
     </div>
 
+    <p>変数は「冒険者カードの記入欄」のようなもの。名前・レベル・HP…とひとマスずつ値をしまっておけます。
+    このレッスンでは、まず画面に文字を出すところから、ひとつずつ進みます。</p>
+
     <div class="part">
-      <span class="tag">① RPGで概念</span>
-      <p>勇者のHPや名前は、ひとつずつ「変数」に入れて持ちます。<code>$</code> で始めるのがPHPの変数です。</p>
+      <span class="tag">① RPGで まなぶ 🔮</span>
+
+      <!-- ステップ1 -->
+      <h2>ステップ1 — まず画面に文字を出す</h2>
+      <p><code>echo</code>（エコー）は「画面に出す」命令です。出したい文字は <code>" "</code>（ダブルクオート）で囲みます。
+      文の終わりには必ず <code>;</code>（セミコロン）を付けます。<code>;</code> を忘れるとエラーになります。</p>
       <php-run><script type="text/php">
-$name  = "勇者アレン";
-$level = 5;
-$hp    = 120;
-$mp    = 30;
-echo "{$name} (Lv{$level}) HP:{$hp} MP:{$mp}";
+echo "ぼうけんの はじまり";
       </script></php-run>
 
-      <p>値の種類を「型」と呼びます。PHPは自動で型を決めます。</p>
-      <php-run><script type="text/php">
-echo gettype(100), "\n";   // 整数
-echo gettype(1.5), "\n";   // 小数
-echo gettype("アレン"), "\n"; // 文字列
-echo gettype(true), "\n";  // 真偽値
-      </script></php-run>
-
-      <p><b>練習：</b>モンスターのHPを表す変数 <code>$monster_hp</code> を作り、80 を入れて出力しよう。</p>
-      <php-exercise expected="80" solution='<?php
-$monster_hp = 80;
-echo $monster_hp;'>
+      <p><b>演習：</b><code>こんにちは、勇者よ</code> と画面に出してみよう。</p>
+      <php-exercise expected="こんにちは、勇者よ" solution='<?php
+echo "こんにちは、勇者よ";'>
         <script type="text/php">
-// $monster_hp に 80 を入れて出力しよう
+// こんにちは、勇者よ と出してみよう
+        </script>
+      </php-exercise>
+
+      <!-- ステップ2 -->
+      <h2>ステップ2 — 値に名前をつける（変数）</h2>
+      <figure>
+        <img src="../assets/img/a01/a01-step2-box.png" alt="淡く光る魔法の宝箱から温かい光と結晶があふれ、前に魔法使いミラが立つ様子" />
+        <figcaption>値をしまう箱＝変数。中身を取り出して使える。</figcaption>
+      </figure>
+      <p><code>$name</code> のように <code>$</code>（ドル記号）で始まるものが<b>変数</b>（値を入れる箱）です。PHPの変数は必ず <code>$</code> 始まり。
+      <code>=</code> は<b>代入</b>で、右の値を左の箱に入れます（数学の「等しい」ではありません）。
+      <code>echo $name;</code> は箱の中身を出します。<code>"$name"</code> のように <code>" "</code> で囲むと文字「$name」そのものを出してしまうので注意。</p>
+      <php-run><script type="text/php">
+$name = "勇者アレン";
+echo $name;
+      </script></php-run>
+
+      <p><b>演習：</b><code>$town</code> という箱に <code>はじまりの村</code> を入れて、その中身を出してみよう。</p>
+      <php-exercise expected="はじまりの村" solution='<?php
+$town = "はじまりの村";
+echo $town;'>
+        <script type="text/php">
+// $town に はじまりの村 を入れて出そう
+        </script>
+      </php-exercise>
+
+      <!-- ステップ3 -->
+      <h2>ステップ3 — 数を入れる（int / float）</h2>
+      <figure>
+        <img src="../assets/img/a01/a01-step3-numbers.png" alt="緑のHPの泉と青のMPの泉があふれる洞窟、手前にスライム" />
+        <figcaption>HPやMPは数。数は箱にそのまま入れる。</figcaption>
+      </figure>
+      <p>数は <code>" "</code> で囲みません。値の種類を<b>型</b>といい、整数は <code>int</code>（イント）、小数は <code>float</code>（フロート）、文字は <code>string</code>（ストリング）です。
+      今は「こういう名前の型がある」とだけ覚えればOKです。</p>
+      <php-run><script type="text/php">
+$hp = 120;
+echo $hp;
+      </script></php-run>
+
+      <p><b>演習：</b><code>$level</code> に <code>5</code> を入れて出してみよう。</p>
+      <php-exercise expected="5" solution='<?php
+$level = 5;
+echo $level;'>
+        <script type="text/php">
+// $level に 5 を入れて出そう
+        </script>
+      </php-exercise>
+
+      <!-- ステップ4 -->
+      <h2>ステップ4 — 文字と変数をつなげる（連結 <code>.</code>）※山場</h2>
+      <p><code>.</code>（ドット）は文字を<b>くっつける</b>記号です（数の足し算 <code>+</code> ではありません）。
+      地の文は <code>" "</code> で囲み、箱は変数名のまま、その間を <code>.</code> でつなぎます。
+      <code>"名前は "</code> の末尾にあるスペースに注目。これが無いと <code>名前は勇者アレン</code> とくっついてしまいます。</p>
+      <php-run><script type="text/php">
+$name = "勇者アレン";
+echo "名前は " . $name;
+      </script></php-run>
+
+      <p class="callout">🧙 賢者のヒント：<code>.</code> は「文字をつなぐ糊」。<code>"文字" . 変数 . "文字"</code> の形を覚えると、ほとんどの表示が作れるぞ。</p>
+
+      <p><b>演習：</b><code>$level = 5</code> を使って <code>レベル5</code> と出してみよう。</p>
+      <php-exercise expected="レベル5" solution='<?php
+$level = 5;
+echo "レベル" . $level;'>
+        <script type="text/php">
+// $level = 5; を使って レベル5 と出そう
+        </script>
+      </php-exercise>
+
+      <!-- ステップ5 -->
+      <h2>ステップ5 — 変数を複数つなぐ（ステータス1行）</h2>
+      <p><code>.</code> はいくつでもつなげられます。文字の部分にスペースや記号を入れて、見やすく整えましょう。</p>
+      <php-run><script type="text/php">
+$name = "勇者アレン";
+$level = 5;
+$hp = 120;
+echo $name . " Lv" . $level . " HP" . $hp;
+      </script></php-run>
+
+      <p><b>演習：</b><code>$monster = "スライム"</code>、<code>$mhp = 80</code> を使って <code>スライム HP80</code> と出してみよう。</p>
+      <php-exercise expected="スライム HP80" solution='<?php
+$monster = "スライム";
+$mhp = 80;
+echo $monster . " HP" . $mhp;'>
+        <script type="text/php">
+// $monster と $mhp を使って スライム HP80 と出そう
+        </script>
+      </php-exercise>
+
+      <!-- ステップ6 -->
+      <h2>ステップ6 — 型をもう少し（true/false・null）</h2>
+      <p>「生きている／たおれた」のような2択（Yes/No）を表す型を <code>bool</code>（ブール＝真偽値）といい、値は <code>true</code> か <code>false</code> です。
+      「何も無い」を表す特別な値は <code>null</code>（ヌル）。
+      じつは <code>true</code> をそのまま <code>echo</code> すると <code>1</code> と出て、<code>false</code> や <code>null</code> は何も出ません。
+      だから真偽値は「もし〜なら」（A02で学ぶ条件分岐）と一緒に使うのが基本です。下の <code>? :</code> は今は深入りしなくて大丈夫。</p>
+      <php-run><script type="text/php">
+$is_alive = true;
+echo $is_alive ? "生きている" : "たおれた";
+      </script></php-run>
+
+      <!-- ステップ7 -->
+      <h2>ステップ7（コラム）— 便利技：<code>{}</code> 補間</h2>
+      <p>ステップ4の <code>.</code> 連結と同じことが、<code>" "</code> の中に <code>{$変数}</code> と書くだけでもできます。これを<b>埋め込み（補間）</b>といいます。
+      <code>{}</code>（波カッコ）は「ここは変数だよ」という目印。これはダブルクオート <code>" "</code> の中だけで効き、シングルクオート <code>' '</code> では効きません。</p>
+      <php-run><script type="text/php">
+$name = "勇者アレン";
+$hp = 120;
+echo "{$name} の HP は {$hp}";
+      </script></php-run>
+
+      <p><b>演習：</b><code>$name = "アレン"</code>、<code>$level = 5</code> を使って <code>アレン(Lv5)</code> と出してみよう。</p>
+      <php-exercise expected="アレン(Lv5)" solution='<?php
+$name = "アレン";
+$level = 5;
+echo "{$name}(Lv{$level})";'>
+        <script type="text/php">
+// {$変数} を使って アレン(Lv5) と出そう
         </script>
       </php-exercise>
     </div>
 
     <div class="part real">
-      <span class="tag">② 実システムでは</span>
-      <p>同じ仕組みを、実際のWebシステムでも使います。たとえば商品の情報を変数に入れます。</p>
+      <span class="tag">② じっせんで つかう ⚔️</span>
+
+      <!-- ステップ8 -->
+      <h2>ステップ8 — 実システムで再演（お店）</h2>
+      <figure>
+        <img src="../assets/img/a01/a01-real-shop.png" alt="賑やかな道具屋の店内。棚のポーションや本、ランタンの光、笑顔の店主" />
+        <figcaption>ゲームもお店も、仕組みは同じ「変数」。</figcaption>
+      </figure>
+      <p>ゲームの <code>$hp</code> も、お店の <code>$price</code> も、まったく同じ「変数」です。
+      実システムでは、意味の分かる半角英字の名前を付けます（例：<code>$product_name</code>＝商品名、<code>$price</code>＝価格）。</p>
       <php-run><script type="text/php">
-$productName = "PHP入門書";
+$product_name = "PHP入門書";
 $price = 2980;
-$stock = 12;
-echo "{$productName}: {$price}円 (在庫{$stock})";
+echo $product_name . " " . $price . "円";
       </script></php-run>
 
-      <p><b>練習：</b>本体価格 <code>$price = 1000</code> の税込価格（税率10%）を出力しよう（ヒント: <code>$price * 1.1</code>）。</p>
-      <php-exercise expected="1100" solution='<?php
-$price = 1000;
-echo $price * 1.1;'>
+      <p><b>演習：</b><code>$user_name = "山田"</code>、<code>$point = 500</code> を使って <code>山田さんのポイント: 500</code> と出してみよう。</p>
+      <php-exercise expected="山田さんのポイント: 500" solution='<?php
+$user_name = "山田";
+$point = 500;
+echo $user_name . "さんのポイント: " . $point;'>
         <script type="text/php">
-$price = 1000;
-// 税込価格（10%）を計算して出力しよう
+// $user_name と $point を使って 山田さんのポイント: 500 と出そう
         </script>
       </php-exercise>
     </div>
 
+    <!-- ステップ9 — まとめ＆チェック -->
     <h2>まとめ＆チェック</h2>
+    <figure>
+      <img src="../assets/img/a01/a01-victory.png" alt="夕暮れの丘で勇者とミラが達成を喜ぶ後ろ姿、舞う光の粒子と跳ねるスライム" />
+      <figcaption>ここまでお疲れさま。最後のチェックへ。</figcaption>
+    </figure>
     <ul>
-      <li>変数は <code>$名前 = 値;</code> で作る入れ物</li>
-      <li>型は int / float / string / bool / null（自動で決まる）</li>
-      <li>文字列の中に <code>{$変数}</code> で埋め込める</li>
+      <li>画面に出すのは <code>echo "文字";</code>（最後に <code>;</code>）</li>
+      <li>変数は <code>$名前 = 値;</code>（文字は <code>" "</code>、数はそのまま）</li>
+      <li>つなぐのは <code>.</code>、<code>" "</code> の中なら <code>{$変数}</code> でも同じ</li>
     </ul>
-    <p><b>チェック：</b>現在の経験値 <code>$exp = 250</code>、次のレベルに必要な <code>$next = 1000</code>。あと何ポイントで次のレベルかを出力しよう。</p>
-    <php-exercise expected="750" solution='<?php
+    <p><b>チェック：</b><code>$exp = 250</code>、<code>$next = 1000</code> を使って <code>経験値 250 / 1000</code> と出してみよう。</p>
+    <php-exercise expected="経験値 250 / 1000" solution='<?php
 $exp = 250;
 $next = 1000;
-echo $next - $exp;'>
+echo "経験値 " . $exp . " / " . $next;'>
       <script type="text/php">
-$exp = 250;
-$next = 1000;
-// あと何ポイントで次のレベル？を出力しよう
+// $exp と $next を使って 経験値 250 / 1000 と出そう
       </script>
     </php-exercise>
 
