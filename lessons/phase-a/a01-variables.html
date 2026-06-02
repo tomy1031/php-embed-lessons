@@ -33,10 +33,6 @@
 
       <!-- ステップ1 -->
       <h2>ステップ1 — まず画面に文字を出す</h2>
-      <figure>
-        <img src="../assets/img/a01/a01-step1-echo.png" alt="勇者が広げた巻物から金色の光のリボンが立ち上る様子" />
-        <figcaption>巻物に書いた言葉が、光になって画面へ。</figcaption>
-      </figure>
       <p><code>echo</code>（エコー）は「画面に出す」命令です。出したい文字は <code>" "</code>（ダブルクオート）で囲みます。
       文の終わりには必ず <code>;</code>（セミコロン）を付けます。<code>;</code> を忘れるとエラーになります。</p>
       <php-run><script type="text/php">
@@ -98,10 +94,6 @@ echo $level;'>
 
       <!-- ステップ4 -->
       <h2>ステップ4 — 文字と変数をつなげる（連結 <code>.</code>）※山場</h2>
-      <figure>
-        <img src="../assets/img/a01/a01-step4-link.png" alt="ミラの杖で2つの光る紋章が金の光の鎖でつながる瞬間、手元の寄り" />
-        <figcaption>文字どうしを鎖でつなぐ＝連結。</figcaption>
-      </figure>
       <p><code>.</code>（ドット）は文字を<b>くっつける</b>記号です（数の足し算 <code>+</code> ではありません）。
       地の文は <code>" "</code> で囲み、箱は変数名のまま、その間を <code>.</code> でつなぎます。
       <code>"名前は "</code> の末尾にあるスペースに注目。これが無いと <code>名前は勇者アレン</code> とくっついてしまいます。</p>
@@ -154,10 +146,6 @@ echo $is_alive ? "生きている" : "たおれた";
 
       <!-- ステップ7 -->
       <h2>ステップ7（コラム）— 便利技：<code>{}</code> 補間</h2>
-      <figure>
-        <img src="../assets/img/a01/a01-step7-embed.png" alt="羊皮紙の上を流れる光の帯に小さな宝石がはまるクローズアップ" />
-        <figcaption>文字の流れの中に、変数という宝石をはめ込む。</figcaption>
-      </figure>
       <p>ステップ4の <code>.</code> 連結と同じことが、<code>" "</code> の中に <code>{$変数}</code> と書くだけでもできます。これを<b>埋め込み（補間）</b>といいます。
       <code>{}</code>（波カッコ）は「ここは変数だよ」という目印。これはダブルクオート <code>" "</code> の中だけで効き、シングルクオート <code>' '</code> では効きません。</p>
       <php-run><script type="text/php">
