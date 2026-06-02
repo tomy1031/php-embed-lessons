@@ -861,7 +861,7 @@ describe('<php-exercise>', () => {
 
   it('solution指定時のみ模範解答ボタンが出て反映される', () => {
     configure({ executor: new FakeExecutor({ stdout: '' }) });
-    const el = mount('solution="echo "ans";"', 'START');
+    const el = mount('solution="ans"', 'START');
     const btn = el.querySelector('.solution') as HTMLButtonElement;
     expect(btn).not.toBeNull();
     btn.click();
