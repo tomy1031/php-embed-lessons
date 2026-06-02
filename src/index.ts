@@ -5,6 +5,7 @@ import { PhpRun } from './components/php-run';
 import { PhpExercise } from './components/php-exercise';
 import { CourseNav } from './components/course-nav';
 import './styles/lesson.css';
+import './styles/course.css';
 
 configure({ executor: new WasmExecutor(), editorFactory: codeMirrorFactory });
 
