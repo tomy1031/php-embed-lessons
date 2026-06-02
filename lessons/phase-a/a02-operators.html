@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A02 演算子と比較（==/===） | RPGで学ぶPHP</title>
+  <script type="module" src="/src/index.ts"></script>
+</head>
+<body>
+  <article class="lesson">
+    <h1>A02 演算子と比較（==/===）</h1>
+    <figure>
+      <img src="../assets/img/a02/a02-battle.png" alt="戦闘でダメージを計算する場面" />
+      <figcaption>ダメージ計算と判定で「演算子」を使う</figcaption>
+    </figure>
+    <div class="goals">
+      <b>このレッスンのねらい</b>
+      <ul>
+        <li>四則演算と比較で判定ができる</li>
+        <li><code>==</code>（値だけ）と <code>===</code>（型も一致）の違いが分かる</li>
+        <li>三項演算子 <code>?:</code> と null合体 <code>??</code> を使える</li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <span class="tag">① RPGで概念</span>
+      <p>攻撃力から防御力を引いてダメージを出します。</p>
+      <php-run><script type="text/php">
+$attack = 45;
+$defense = 12;
+echo "ダメージ: ", $attack - $defense;
+      </script></php-run>
+
+      <p>ここが最重要。<code>==</code> は「値だけ」、<code>===</code> は「型も一致」を見ます。</p>
+      <php-run><script type="text/php">
+echo (5 == "5")  ? "==: 同じ"  : "==: 違う", "\n";   // 値だけ見る → 同じ
+echo (5 === "5") ? "===: 同じ" : "===: 違う", "\n";  // 型も見る → 違う
+      </script></php-run>
+
+      <p>判定の便利な書き方も覚えましょう。</p>
+      <php-run><script type="text/php">
+$hp = 0;
+echo ($hp <= 0) ? "戦闘不能" : "戦える", "\n";  // 三項演算子
+$nickname = null;
+echo $nickname ?? "名無しの戦士", "\n";          // null合体
+      </script></php-run>
+
+      <p><b>練習：</b>サイコロの目 <code>$roll = 100</code> が「ちょうど100（型も一致）」なら「クリティカル！」、違えば「通常」を出力しよう。</p>
+      <php-exercise expected="クリティカル！" solution='<?php
+$roll = 100;
+echo ($roll === 100) ? "クリティカル！" : "通常";'>
+        <script type="text/php">
+$roll = 100;
+// $roll が === で 100 なら「クリティカル！」、違えば「通常」
+        </script>
+      </php-exercise>
+    </div>
+
+    <div class="part real">
+      <span class="tag">② 実システムでは</span>
+      <p>フォームから来る値は「文字列」です。<code>==</code> は思わぬ落とし穴になり、<code>===</code> が安全です。</p>
+      <php-run><script type="text/php">
+$input = "0";  // フォームから来た文字列の "0"
+echo ($input == false) ? "空っぽ扱い" : "値あり", "\n"; // == の罠: "0" は false 扱い
+echo ($input === "")   ? "空" : "入力あり", "\n";        // === なら厳密
+      </script></php-run>
+
+      <p><b>練習：</b>在庫 <code>$stock = 0</code> が「ちょうど0（型も一致）」なら「在庫なし」、それ以外は「在庫あり」を出力しよう。</p>
+      <php-exercise expected="在庫なし" solution='<?php
+$stock = 0;
+echo ($stock === 0) ? "在庫なし" : "在庫あり";'>
+        <script type="text/php">
+$stock = 0;
+// === を使って「在庫なし」/「在庫あり」を出力
+        </script>
+      </php-exercise>
+    </div>
+
+    <h2>まとめ＆チェック</h2>
+    <ul>
+      <li><code>==</code> は値だけ、<code>===</code> は型も一致（基本は <code>===</code> を使う）</li>
+      <li><code>?:</code> で短い条件分岐、<code>??</code> で「無ければこれ」</li>
+    </ul>
+    <p class="callout">迷ったら <code>===</code>。<code>==</code> は <code>"0"</code> や <code>""</code> で予想外の結果になりがち。</p>
+    <p><b>チェック：</b>単価 <code>$price = 1000</code>、個数 <code>$qty = 3</code>。合計を出し、合計が 2000 以上なら 10% 引きした金額を出力しよう。</p>
+    <php-exercise expected="2700" solution='<?php
+$price = 1000;
+$qty = 3;
+$total = $price * $qty;
+echo ($total >= 2000) ? $total * 0.9 : $total;'>
+      <script type="text/php">
+$price = 1000;
+$qty = 3;
+// 合計を出し、2000以上なら10%引きして出力
+      </script>
+    </php-exercise>
+
+    <course-nav manifest="../course.json"></course-nav>
+  </article>
+</body>
+</html>
