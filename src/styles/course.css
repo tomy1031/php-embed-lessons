@@ -1,0 +1,19 @@
+.lesson { max-width: 760px; margin: 0 auto; padding: 1.5rem 1.2rem 3rem;
+  font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  line-height: 1.75; color: #1f2430; }
+.lesson h1 { font-size: 1.6rem; }
+.lesson h2 { margin-top: 2rem; padding-bottom: .2rem; border-bottom: 2px solid #e0e4ec; }
+.lesson .goals { background: #f1f5ff; border: 1px solid #d6e0ff; border-radius: 8px; padding: .8rem 1rem; }
+.lesson figure { margin: 1rem 0; text-align: center; }
+.lesson figure img { max-width: 100%; border-radius: 10px; border: 1px solid #e0e4ec; }
+.lesson figcaption { font-size: .85rem; color: #8a94a6; }
+.lesson .part { background: #fafbff; border: 1px solid #eef1f7; border-radius: 10px; padding: .2rem 1rem 1rem; margin: 1rem 0; }
+.lesson .part.real { background: #fffaf3; border-color: #f4e7d4; }
+.lesson .tag { display: inline-block; font-size: .75rem; font-weight: 700; color: #fff;
+  background: #2563eb; border-radius: 999px; padding: .1rem .7rem; margin: .8rem 0 .2rem; }
+.lesson .part.real .tag { background: #c2761b; }
+.lesson .callout { background: #fff7f7; border-left: 4px solid #f38ba8; padding: .6rem .9rem; border-radius: 4px; }
+nav.course-nav { display: flex; justify-content: space-between; gap: .5rem; margin-top: 2.5rem;
+  padding-top: 1rem; border-top: 1px solid #e0e4ec; font-size: .95rem; }
+nav.course-nav a { text-decoration: none; color: #2563eb; }
+nav.course-nav a.toc { color: #8a94a6; }

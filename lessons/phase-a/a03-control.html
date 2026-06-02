@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A03 制御構文 | RPGで学ぶPHP</title>
+  <script type="module" src="/src/index.ts"></script>
+</head>
+<body>
+  <article class="lesson">
+    <h1>A03 制御構文</h1>
+    <figure>
+      <img src="../assets/img/a03/a03-menu.png" alt="戦闘コマンドのメニュー画面" />
+      <figcaption>「もし〜なら」「繰り返す」で物語が動く</figcaption>
+    </figure>
+    <div class="goals">
+      <b>このレッスンのねらい</b>
+      <ul>
+        <li><code>if</code>/<code>elseif</code>/<code>switch</code> で分岐できる</li>
+        <li><code>for</code>/<code>while</code>/<code>foreach</code> で繰り返せる</li>
+        <li>条件と繰り返しを組み合わせられる</li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <span class="tag">① RPGで概念</span>
+      <p>選んだコマンドで処理を分けます。<code>switch</code> が便利です。</p>
+      <php-run><script type="text/php">
+$command = "attack";
+switch ($command) {
+  case "attack": echo "斬りかかった！"; break;
+  case "magic":  echo "呪文を唱えた！"; break;
+  default:       echo "様子を見た";
+}
+      </script></php-run>
+
+      <p>敵の数だけ繰り返すなら <code>foreach</code>。</p>
+      <php-run><script type="text/php">
+$enemies = ["スライム", "ゴブリン", "ドラゴン"];
+foreach ($enemies as $e) {
+  echo "{$e} が現れた！\n";
+}
+      </script></php-run>
+
+      <p>回数が決まっているなら <code>for</code>。</p>
+      <php-run><script type="text/php">
+for ($turn = 1; $turn <= 3; $turn++) {
+  echo "ターン{$turn}\n";
+}
+      </script></php-run>
+
+      <p><b>練習：</b>HP <code>$hp = 20</code>。0以下なら「戦闘不能」、30未満なら「ピンチ！」、それ以外は「元気」を出力しよう。</p>
+      <php-exercise expected="ピンチ！" solution='<?php
+$hp = 20;
+if ($hp <= 0) {
+  echo "戦闘不能";
+} elseif ($hp < 30) {
+  echo "ピンチ！";
+} else {
+  echo "元気";
+}'>
+        <script type="text/php">
+$hp = 20;
+// if / elseif / else で状態を出力しよう
+        </script>
+      </php-exercise>
+    </div>
+
+    <div class="part real">
+      <span class="tag">② 実システムでは</span>
+      <p>注文ステータスの表示分岐や、一覧の繰り返し表示に使います。</p>
+      <php-run><script type="text/php">
+$status = "shipped";
+switch ($status) {
+  case "pending": echo "支払い待ち"; break;
+  case "shipped": echo "発送済み"; break;
+  case "done":    echo "完了"; break;
+}
+      </script></php-run>
+
+      <p><b>練習：</b>カートの価格一覧 <code>[500, 800, 1200]</code> を <code>foreach</code> で合計して出力しよう。</p>
+      <php-exercise expected="2500" solution='<?php
+$prices = [500, 800, 1200];
+$total = 0;
+foreach ($prices as $p) {
+  $total += $p;
+}
+echo $total;'>
+        <script type="text/php">
+$prices = [500, 800, 1200];
+$total = 0;
+// foreach で合計して出力しよう
+        </script>
+      </php-exercise>
+    </div>
+
+    <h2>まとめ＆チェック</h2>
+    <ul>
+      <li>分岐：<code>if/elseif/else</code>、多分岐は <code>switch</code></li>
+      <li>繰り返し：回数なら <code>for</code>、要素ごとなら <code>foreach</code></li>
+    </ul>
+    <p><b>チェック：</b><code>for</code> を使って 1 から 5 までを連結して出力しよう（例: <code>12345</code>）。</p>
+    <php-exercise expected="12345" solution='<?php
+for ($i = 1; $i <= 5; $i++) {
+  echo $i;
+}'>
+      <script type="text/php">
+// for で 1〜5 を連結して出力しよう
+      </script>
+    </php-exercise>
+
+    <course-nav manifest="../course.json"></course-nav>
+  </article>
+</body>
+</html>

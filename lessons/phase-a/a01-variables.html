@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A01 変数とデータ型 | RPGで学ぶPHP</title>
+  <script type="module" src="/src/index.ts"></script>
+</head>
+<body>
+  <article class="lesson">
+    <h1>A01 変数とデータ型</h1>
+    <figure>
+      <img src="../assets/img/a01/a01-status.png" alt="勇者のステータス画面（名前・レベル・HP・MP）" />
+      <figcaption>勇者のステータスは「変数」でできている</figcaption>
+    </figure>
+    <div class="goals">
+      <b>このレッスンのねらい</b>
+      <ul>
+        <li>変数は「値の入れ物」だと分かる</li>
+        <li><code>$名前 = 値;</code> で作れる</li>
+        <li>int / float / string / bool / null の型を知る</li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <span class="tag">① RPGで概念</span>
+      <p>勇者のHPや名前は、ひとつずつ「変数」に入れて持ちます。<code>$</code> で始めるのがPHPの変数です。</p>
+      <php-run><script type="text/php">
+$name  = "勇者アレン";
+$level = 5;
+$hp    = 120;
+$mp    = 30;
+echo "{$name} (Lv{$level}) HP:{$hp} MP:{$mp}";
+      </script></php-run>
+
+      <p>値の種類を「型」と呼びます。PHPは自動で型を決めます。</p>
+      <php-run><script type="text/php">
+echo gettype(100), "\n";   // 整数
+echo gettype(1.5), "\n";   // 小数
+echo gettype("アレン"), "\n"; // 文字列
+echo gettype(true), "\n";  // 真偽値
+      </script></php-run>
+
+      <p><b>練習：</b>モンスターのHPを表す変数 <code>$monster_hp</code> を作り、80 を入れて出力しよう。</p>
+      <php-exercise expected="80" solution='<?php
+$monster_hp = 80;
+echo $monster_hp;'>
+        <script type="text/php">
+// $monster_hp に 80 を入れて出力しよう
+        </script>
+      </php-exercise>
+    </div>
+
+    <div class="part real">
+      <span class="tag">② 実システムでは</span>
+      <p>同じ仕組みを、実際のWebシステムでも使います。たとえば商品の情報を変数に入れます。</p>
+      <php-run><script type="text/php">
+$productName = "PHP入門書";
+$price = 2980;
+$stock = 12;
+echo "{$productName}: {$price}円 (在庫{$stock})";
+      </script></php-run>
+
+      <p><b>練習：</b>本体価格 <code>$price = 1000</code> の税込価格（税率10%）を出力しよう（ヒント: <code>$price * 1.1</code>）。</p>
+      <php-exercise expected="1100" solution='<?php
+$price = 1000;
+echo $price * 1.1;'>
+        <script type="text/php">
+$price = 1000;
+// 税込価格（10%）を計算して出力しよう
+        </script>
+      </php-exercise>
+    </div>
+
+    <h2>まとめ＆チェック</h2>
+    <ul>
+      <li>変数は <code>$名前 = 値;</code> で作る入れ物</li>
+      <li>型は int / float / string / bool / null（自動で決まる）</li>
+      <li>文字列の中に <code>{$変数}</code> で埋め込める</li>
+    </ul>
+    <p><b>チェック：</b>現在の経験値 <code>$exp = 250</code>、次のレベルに必要な <code>$next = 1000</code>。あと何ポイントで次のレベルかを出力しよう。</p>
+    <php-exercise expected="750" solution='<?php
+$exp = 250;
+$next = 1000;
+echo $next - $exp;'>
+      <script type="text/php">
+$exp = 250;
+$next = 1000;
+// あと何ポイントで次のレベル？を出力しよう
+      </script>
+    </php-exercise>
+
+    <course-nav manifest="../course.json"></course-nav>
+  </article>
+</body>
+</html>
