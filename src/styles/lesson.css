@@ -1,0 +1,17 @@
+.php-run, .php-exercise { display: block; margin: 1.2rem 0; border: 1px solid #d8dee9;
+  border-radius: 8px; overflow: hidden; font-family: ui-monospace, Menlo, Consolas, monospace; }
+.php-run .code, .php-exercise .editor-host { margin: 0; padding: .6rem .8rem; background: #1e1e2e; color: #cdd6f4; }
+.php-run .output, .php-exercise .output { padding: .6rem .8rem; background: #11221a; color: #a6e3a1;
+  white-space: pre-wrap; min-height: 1.4em; }
+.php-run .output.has-error, .php-exercise .output.has-error { background: #2a1620; color: #f38ba8; }
+.layout-compact .code, .layout-compact .output { display: block; }
+.layout-split .panes, .php-run.layout-split { display: grid; grid-template-columns: 1fr 1fr; }
+.php-exercise .panes { display: grid; grid-template-columns: 1fr 1fr; }
+.php-exercise .controls { display: flex; gap: .5rem; align-items: center; padding: .5rem .8rem; background: #181825; }
+.php-exercise button { cursor: pointer; border: 0; border-radius: 4px; padding: .25rem .8rem; }
+.php-exercise .run { background: #2563eb; color: #fff; }
+.php-exercise .result.pass { color: #16a34a; font-weight: 700; }
+.php-exercise .result.fail { color: #dc2626; font-weight: 700; }
+@media (max-width: 640px) {
+  .php-run.layout-split, .php-exercise .panes { grid-template-columns: 1fr; }
+}

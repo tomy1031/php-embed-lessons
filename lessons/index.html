@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PHP基礎レッスン</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      max-width: 720px; margin: 0 auto; padding: 2rem 1.2rem; line-height: 1.7; color: #1f2430; }
+    h1 { margin-bottom: .3rem; }
+    .lead { color: #51607a; margin-top: 0; }
+    .note { background: #f1f5ff; border: 1px solid #d6e0ff; border-radius: 8px;
+      padding: .8rem 1rem; font-size: .92rem; color: #34406b; }
+    ul.lessons { list-style: none; padding: 0; }
+    ul.lessons li { margin: .5rem 0; }
+    ul.lessons a { display: block; text-decoration: none; color: #1f2430;
+      border: 1px solid #e0e4ec; border-radius: 8px; padding: .8rem 1rem; transition: .15s; }
+    ul.lessons a:hover { border-color: #2563eb; background: #f7faff; }
+    .num { color: #2563eb; font-weight: 700; margin-right: .5rem; }
+    .ref a { color: #51607a; }
+    footer { margin-top: 2rem; font-size: .85rem; color: #8a94a6; }
+  </style>
+</head>
+<body>
+  <h1>PHP基礎レッスン</h1>
+  <p class="lead">ブラウザの中でPHPがそのまま動きます。インストール不要・このページを開くだけ。</p>
+  <p class="note">📝 コード例は読みながら結果を確認でき、<b>練習問題は自分で書き換えて実行・採点</b>できます。
+  サーバーは不要で、すべてブラウザ内（WebAssembly）で実行されます。</p>
+
+  <ul class="lessons">
+    <li><a href="./01-variables.html"><span class="num">01</span>変数を学ぼう</a></li>
+    <li><a href="./02-arrays.html"><span class="num">02</span>配列を学ぼう</a></li>
+    <li><a href="./03-functions.html"><span class="num">03</span>関数を学ぼう</a></li>
+    <li class="ref"><a href="./md-01-variables.html">（参考）Markdownから生成したレッスン</a></li>
+  </ul>
+
+  <footer>PHP埋め込み実行型 学習システム — php-wasm で動作</footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>配列を学ぼう</title><script type="module" src="/src/index.ts"></script></head>
+<body>
+  <article class="lesson">
+    <h1>配列を学ぼう</h1>
+    <p>配列は複数の値をまとめて持てます。</p>
+    <php-run><script type="text/php">
+$fruits = ["りんご", "みかん", "ばなな"];
+echo $fruits[1];
+    </script></php-run>
+
+    <h2>練習：合計を出そう（採点なし・自由練習）</h2>
+    <p>配列の数を全部足して出力してみましょう。</p>
+    <php-exercise>
+      <script type="text/php">
+$nums = [1, 2, 3, 4];
+// array_sum を使ってみよう
+      </script>
+    </php-exercise>
+
+    <h2>練習：要素数を出力（採点あり）</h2>
+    <php-exercise expected="3" solution='<?php echo count(["a","b","c"]);'>
+      <script type="text/php">
+$items = ["a", "b", "c"];
+// 要素数(3)を出力
+      </script>
+    </php-exercise>
+  </article>
+</body>
+</html>

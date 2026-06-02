@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>関数を学ぼう</title><script type="module" src="/src/index.ts"></script></head>
+<body>
+  <article class="lesson">
+    <h1>関数を学ぼう</h1>
+    <p>処理に名前をつけて再利用できます。</p>
+    <php-run><script type="text/php">
+function greet($name) {
+    return "やあ、{$name}さん";
+}
+echo greet("PHP");
+    </script></php-run>
+
+    <h2>練習：2倍にする関数（採点あり）</h2>
+    <p><code>double(5)</code> が 10 を返すように実装し、結果を出力してください。</p>
+    <php-exercise expected="10" solution='<?php function double($n){return $n*2;} echo double(5);'>
+      <script type="text/php">
+function double($n) {
+    // ここを実装
+}
+echo double(5);
+      </script>
+    </php-exercise>
+  </article>
+</body>
+</html>

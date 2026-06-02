@@ -117,11 +117,14 @@ TechEducate/
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
     "types": ["vitest/globals", "node"]
   },
   "include": ["src", "build", "test", "tests"]
 }
 ```
+> 注: `baseUrl`+`paths` は `@/` を `tsc` でも解決させるため（Vite/Vitestのaliasと一致）。Task 9のレビューで追加。
 
 - [ ] **Step 3: vite.config.ts を作成（MPA・base相対・wasm配慮）**
 
@@ -160,7 +163,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./test/setup.ts'],
-    include: ['src/**/*.test.ts'],
+    include: ['src/**/*.test.ts', 'build/**/*.test.ts'],
   },
 });
 ```
@@ -861,7 +864,7 @@ describe('<php-exercise>', () => {
 
   it('solution指定時のみ模範解答ボタンが出て反映される', () => {
     configure({ executor: new FakeExecutor({ stdout: '' }) });
-    const el = mount('solution="echo "ans";"', 'START');
+    const el = mount('solution="ans"', 'START');
     const btn = el.querySelector('.solution') as HTMLButtonElement;
     expect(btn).not.toBeNull();
     btn.click();
