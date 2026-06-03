@@ -30,8 +30,15 @@ export class CharTalk extends HTMLElement {
     (this.querySelector('.say') as HTMLElement).innerHTML = body;
     if (avatar) {
       const img = this.querySelector('img.avatar') as HTMLImageElement;
-      img.src = avatar;
       img.alt = info.name;
+      // 画像が未生成/読み込み失敗でも壊れた画像アイコンを出さず、頭文字プレースホルダに退避。
+      img.addEventListener('error', () => {
+        const ph = document.createElement('span');
+        ph.className = 'avatar avatar-ph';
+        ph.textContent = initial;
+        img.replaceWith(ph);
+      });
+      img.src = avatar;
     }
   }
 }
