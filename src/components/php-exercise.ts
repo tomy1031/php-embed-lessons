@@ -26,7 +26,15 @@ export class PhpExercise extends HTMLElement {
     const all = Array.from(document.querySelectorAll('php-exercise'));
     const idx = all.indexOf(this);
     const path = typeof location !== 'undefined' ? location.pathname : '';
-    return `${path}#${idx}`;
+    // スターター内容のハッシュをキーに含める：レッスン改訂でスターターが変わると
+    // 旧版の保存コードを読み込まない（同じスターターなら学習者の編集は保持される）。
+    return `${path}#${idx}@${this.hashStarter(this.starter)}`;
+  }
+
+  private hashStarter(s: string): string {
+    let h = 5381;
+    for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0;
+    return h.toString(36);
   }
 
   private render(): void {
