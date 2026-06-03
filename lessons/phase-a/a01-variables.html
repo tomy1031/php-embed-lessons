@@ -12,142 +12,129 @@
 
     <figure>
       <img src="../assets/img/a01/a01-hero.png" alt="夜明けの草原に立つ勇者の後ろ姿。遠くに城と山" />
-      <figcaption>ようこそ、<b>CodeQuest</b> へ。きみのぼうけんが、いま始まる。</figcaption>
+      <figcaption>ようこそ、<b>CodeQuest</b> へ。あなたの冒険が、いま始まる。</figcaption>
     </figure>
+
+    <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+      ようこそ、勇者よ。わたしは案内人のミラ。このページのコードは<b>本物</b>。ボタンを押すと、すぐ下で動きますよ。
+    </char-talk>
+    <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
+      コードって、むずかしそう…。ぼくにもできるかな？
+    </char-talk>
+    <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+      大丈夫。まずは1回、<b>▶ 実行</b> ボタンを押すだけ。やってみましょう。
+    </char-talk>
 
     <div class="goals">
       <b>このクエストでできるようになること</b>
       <ul>
-        <li>画面に文字を出す（<code>echo</code>）が使える</li>
-        <li>名前をつけて値を覚えさせる（<b>変数</b>）が使える</li>
-        <li>文字をつなげて、自分だけの物語を表示できる</li>
+        <li>画面に文字を出す（<code>echo</code>）</li>
+        <li>名前をつけて値を覚えさせる（<b>変数</b>）</li>
+        <li>文字をつなげて、自分だけの物語を表示する</li>
       </ul>
     </div>
 
     <div class="part">
       <span class="tag">① 冒険のはじまり 🔮</span>
 
-      <h2>つかいかた（まずは1回さわってみよう）</h2>
-      <p>このページのコードは<b>本当に動きます</b>。コードのすぐ下にある <b>▶ 実行</b> ボタンを押すと、プログラムが動いて、<b>ボタンの すぐ下</b>に 結果が出ます。
-      （コードのブロックには、かならず <b>▶ 実行</b> ボタンが付いています。気になったら、いつでも押して動かしてOK。）
-      まずは下の <b>▶ 実行</b> ボタンを押してみましょう。</p>
+      <h2>つかいかた</h2>
+      <p>コードのすぐ下にある <b>▶ 実行</b> ボタンを押すと、プログラムが動いて、<b>ボタンのすぐ下</b>に結果が出ます。すべてのコードに <b>▶ 実行</b> ボタンが付いています。まずは押してみましょう。</p>
       <php-run><script type="text/php">
-echo "CodeQuest へ ようこそ！";
+echo "CodeQuestへ ようこそ！";
       </script></php-run>
-      <p class="callout">🧙 賢者のヒント：練習問題のエディタ（明るい入力欄）の文字は<b>書き換えられます</b>。書き換えたら <b>▶ 実行</b>。元に戻したいときは <b>↺ 最初に戻す</b>（書いた内容は消えて、やり直せます）。
-      <b>「答えを見る」は、一度 実行してから</b>出てきます（まず自分でやってみよう！）。</p>
+
+      <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
+        あ、文字が出た！押すと動くんだ。
+      </char-talk>
+      <p class="callout">🧙 ミラ：明るい入力欄の文字は書き換えられます。書き換えたら <b>▶ 実行</b>。元に戻すときは <b>↺ 最初に戻す</b>（書いた内容は消えてやり直せます）。「答えを見る」は一度 ▶ 実行 してから出てきます。</p>
 
       <h2>ステップ1 — 画面に文字を出す（<code>echo</code>）</h2>
-      <p><code>echo</code>（エコー）は「<b>画面に出す</b>」命令です。出したい文字は <code>"&nbsp;"</code>（ダブルクオート）で囲み、文の終わりに <code>;</code>（セミコロン）を付けます。
-      コードの中の <code>//</code> で始まる部分は<b>コメント（メモ）</b>。コンピュータは無視するので、きみへのヒントが書いてあります。</p>
+      <p><code>echo</code>（エコー）は「画面に出す」命令です。</p>
+      <point-box title="echo の覚えどころ">
+        <li>出したい文字は <code>"&nbsp;"</code>（ダブルクオート）で囲む</li>
+        <li>文の終わりに <code>;</code>（セミコロン）を付ける</li>
+        <li><code>//</code> から行末は<b>メモ（コメント）</b>。コンピュータは読み飛ばします</li>
+      </point-box>
       <php-run><script type="text/php">
-echo "ぼうけんの しょ を ひらいた";
+echo "冒険の書を ひらいた";
       </script></php-run>
 
-      <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを かきかえる</code> を <b>ぜんぶ消して</b>、<code>たびに でる</code> と打ってみよう。（「たびに」と「でる」の間は <b>半角スペース1つ</b>。採点は<b>文字の中身がぴったり同じ</b>かどうかで決まります（前後の空白は気にしなくてOK）。）</p>
-      <php-exercise expected="たびに でる" solution='<?php
-echo "たびに でる";'>
+      <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを書きかえる</code> を消して、<code>旅に出る</code> と打ってみよう。採点は文字の中身が同じかどうかで決まります（前後の空白は気にしなくてOK）。</p>
+      <php-exercise expected="旅に出る" solution='<?php
+echo "旅に出る";'>
         <script type="text/php">
-// " " の中を ぜんぶ消して「たびに でる」と打ってね
-echo "ここを かきかえる";
+// " " の中を消して「旅に出る」と打ってね
+echo "ここを書きかえる";
         </script>
       </php-exercise>
 
       <h2>ステップ2 — 名前をつけて覚えさせる（変数）</h2>
-      <p>もし主人公の名前を、あちこちで何度も使いたいとき——毎回おなじ文字を打つのは大変です。見てください：
-      （コードの中の <code>\n</code> は「ここで<b>改行</b>する」という合図。出力が次の行に変わります。）</p>
+      <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
+        同じ「勇者」を何回も打つの、ちょっと面倒だなあ。
+      </char-talk>
       <php-run><script type="text/php">
-echo "ゆうしゃ よ、よくぞ来た！\n";
-echo "ゆうしゃ の ぼうけんが はじまる！";
+echo "勇者よ、よくぞ来た！";
+echo "勇者の冒険が始まる！";
       </script></php-run>
-      <p>「ゆうしゃ」を2回も書いていますね。そこで——<b>一度だけ名前をつけて覚えさせ、何度でも呼び出せる</b>ようにします。これが<b>変数</b>です。
-      （次のコードに出てくる <code>.</code> は「文字どうしを<b>つなぐ</b>」記号。すぐ下でくわしく説明します。）</p>
+      <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+        そこで<b>変数</b>。一度だけ名前をつけて覚えさせれば、何度でも呼び出せます。
+      </char-talk>
       <php-run><script type="text/php">
-$name = "ゆうしゃ";
-echo $name . "よ、よくぞ来た！\n";
-echo $name . "の ぼうけんが はじまる！";
+$name = "勇者";
+echo $name . "よ、よくぞ来た！";
+echo $name . "の冒険が始まる！";
       </script></php-run>
-      <p>ポイントは3つ：</p>
-      <ul>
-        <li><code>$name</code> … PHPの変数は <code>$</code>（ドル）で始めます。これが「覚えさせる名前」。</li>
-        <li><code>=</code> … 右の値を、その名前に<b>入れる</b>こと（むずかしく言うと「代入」）。算数の「ひとしい」ではありません。</li>
-        <li><code>.</code> … 文字どうしを<b>つなぐ</b>記号（足し算の <code>+</code> ではありません）。</li>
-      </ul>
 
-      <p><b>変数の うれしい ところは、2つ：</b></p>
-      <ul>
-        <li><b>① 何度でも 呼び出せる</b> … 一度 名前をつければ、同じ値を あちこちで 使いまわせる（毎回 打ち直さなくていい）。</li>
-        <li><b>② あとから 中身を 変えられる</b> … たとえば <b>レベルアップ</b>したら、同じ <code>$lv</code> の中身を 書きかえるだけ。次のステップで ためしてみよう。</li>
-      </ul>
+      <point-box title="変数のポイント">
+        <li><code>$name</code> … 変数は <code>$</code>（ドル）で始める。これが「覚えさせる名前」</li>
+        <li><code>=</code> … 右の値を、その名前に<b>入れる</b>こと（むずかしく言うと「代入」）。算数の「ひとしい」ではありません</li>
+        <li><code>.</code>（ドット） … 文字どうしを<b>つなぐ</b>記号（足し算の <code>+</code> ではありません）</li>
+      </point-box>
 
-      <figure>
-        <img src="../assets/img/a01/a01-step2-box.png" alt="魔法の光と結晶、魔法使いの少女" />
-        <figcaption>名前をつけて覚えさせれば、何度でも呼び出して使える。</figcaption>
-      </figure>
-
-      <p><b>あそんでみよう（自由）：</b><code>$name</code> を<b>きみ自身の名前</b>に書き換えて実行してみよう。物語がきみの名前で進みます。（これは採点なし。自由にどうぞ）</p>
+      <p><b>まずは値を変えてみよう：</b>下の <code>$name</code> の <code>"勇者"</code> を、あなたの好きな名前に書き換えて <b>▶ 実行</b>。表示が変わります。（この問題は採点なし。自由にどうぞ）</p>
       <php-exercise>
         <script type="text/php">
-$name = "ここに じぶんの なまえ";   // " " の中を じぶんの なまえに かきかえてね
-echo $name . "よ、よくぞ来た！";
+$name = "勇者";
+echo $name . "の冒険が始まる！";
         </script>
       </php-exercise>
 
-      <p>（ここからは、例として主人公の名前を <b>アレン</b> として進めます。）</p>
-      <p><b>クエスト：</b><code>$name</code> に <code>アレン</code> を覚えさせて、<code>アレンの ぼうけんが はじまる！</code> と表示しよう。（改行 <code>\n</code> は今回は使いません。1行だけでOK。）</p>
-      <php-exercise expected="アレンの ぼうけんが はじまる！" solution='<?php
-$name = "アレン";
-echo $name . "の ぼうけんが はじまる！";'>
-        <script type="text/php">
-$name = "アレン";
-// $name と "の ぼうけんが はじまる！" を . でつないで出そう
-        </script>
-      </php-exercise>
-
-      <h2>ステップ3 — 数を覚えさせる（ステータス）</h2>
-      <p>名前のような<b>文字</b>は <code>"&nbsp;"</code> で囲みますが、HPやレベルのような<b>数</b>は囲みません。
-      <b>覚えることはこれだけ</b>：文字は <code>"&nbsp;"</code> で囲む、数は囲まない。</p>
+      <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+        変数の良いところは、<b>あとから中身を変えられる</b>こと。レベルアップで数を書きかえてみましょう。
+      </char-talk>
       <php-run><script type="text/php">
 $lv = 1;
-$hp = 20;
-echo "レベル" . $lv . " / HP" . $hp;
+echo "いまのレベルは" . $lv;
+
+$lv = 5;
+echo "レベルアップ！ いまはレベル" . $lv;
       </script></php-run>
 
-      <p>そして——<b>レベルアップ！</b> 同じ <code>$lv</code> に、新しい数を もう一度 入れると、中身が 入れかわります。これが さっき言った「あとから 中身を 変えられる」という 変数の 強みです。</p>
-      <php-run><script type="text/php">
-$lv = 1;
-echo "いまの レベルは " . $lv . "\n";
-
-$lv = 5;   // レベルアップ！ $lv の中身を 5 に 書きかえる
-echo "レベルアップ！ いまは レベル" . $lv;
-      </script></php-run>
-
-      <figure>
-        <img src="../assets/img/a01/a01-step3-numbers.png" alt="緑のHPの泉と青のMPの泉があふれる洞窟、手前にスライム" />
-        <figcaption>HPやMPは「数」。覚えさせて、いつでも呼び出せる。</figcaption>
-      </figure>
-
-      <p><b>クエスト：</b><code>$lv</code> に <code>5</code> を覚えさせて、<code>レベル5</code> と表示しよう。</p>
-      <php-exercise expected="レベル5" solution='<?php
-$lv = 5;
-echo "レベル" . $lv;'>
+      <p>（ここからは、例として名前を <b>アレン</b> として進めます。）</p>
+      <p><b>クエスト：</b><code>$name</code> に <code>アレン</code> を入れて、<code>アレンの冒険が始まる！</code> と表示しよう。</p>
+      <php-exercise expected="アレンの冒険が始まる！" solution='<?php
+$name = "アレン";
+echo $name . "の冒険が始まる！";'>
         <script type="text/php">
-$lv = 5;
-// "レベル" と $lv を . でつないで出そう
+$name = "アレン";
+// $name と "の冒険が始まる！" を . でつないで出そう
         </script>
       </php-exercise>
 
-      <h2>ステップ4 — つなげて、ひと目で分かるステータスに</h2>
-      <p><code>.</code> は<b>いくつでも</b>つなげます（2個でも4個でも、やることは同じ）。文字の部分にスペースや記号を入れて、見やすく整えましょう。
-      ヒント：<code>"&nbsp;HP"</code> のように、<code>"&nbsp;"</code> の中には スペースや <code>(</code> などの記号も <b>そのまま</b>入れられます（記号も「ただの文字」として表示されます）。</p>
+      <h2>ステップ3 — 数とステータス、そして連結</h2>
+      <p>名前のような<b>文字</b>は <code>"&nbsp;"</code> で囲みますが、HPやレベルのような<b>数</b>は囲みません。覚えるのはこれだけ：文字は囲む、数は囲まない。</p>
       <php-run><script type="text/php">
 $name = "アレン";
-$lv = 1;
+$lv = 5;
 $hp = 20;
 echo $name . " レベル" . $lv . " HP" . $hp;
       </script></php-run>
+      <point-box title="連結のヒント">
+        <li><code>.</code> は<b>いくつでも</b>つなげる（2個でも4個でも同じ）</li>
+        <li><code>"&nbsp;HP"</code> のように、<code>"&nbsp;"</code> の中にはスペースや記号も<b>そのまま</b>入れられる</li>
+      </point-box>
 
-      <p><b>クエスト：</b><code>$name = "アレン"</code> と <code>$hp = 20</code> を使って、<code>アレン HP20</code> と表示しよう。（「アレン」と「HP20」の間は <b>半角スペース1つ</b>。）</p>
+      <p><b>クエスト：</b><code>$name = "アレン"</code> と <code>$hp = 20</code> を使って、<code>アレン HP20</code> と表示しよう。（「アレン」と「HP20」の間は半角スペース1つ。）</p>
       <php-exercise expected="アレン HP20" solution='<?php
 $name = "アレン";
 $hp = 20;
@@ -162,35 +149,22 @@ $hp = 20;
 
     <div class="part real">
       <span class="tag">② じつは、実際のアプリも同じ ⚔️</span>
-      <p><b>ここからは、現実のアプリの話。</b>変数は、ゲームだけのものではありません。買い物アプリでも、商品名や値段を変数に覚えさせて使います。題材がちがうだけで、しくみは<b>まったく同じ</b>です。</p>
+      <p><b>ここからは現実のアプリの話。</b>変数はゲームだけのものではありません。買い物アプリでも、商品名や値段を変数に覚えさせて使います。題材が違うだけで、仕組みは<b>まったく同じ</b>です。</p>
       <php-run><script type="text/php">
 $product = "やくそう";
 $price = 50;
-echo $product . " は " . $price . "ゴールド";
+echo $product . "は" . $price . "ゴールド";
       </script></php-run>
     </div>
 
-    <h2>つぎのクエストの予告 — 情報が増えたら？</h2>
-    <p>仲間が一人なら、変数を並べるだけでOK。でも仲間や持ち物が増えると、バラバラの変数では管理が大変になります……</p>
-    <php-run><script type="text/php">
-// 情報が増えると、変数がバラバラで大変…
-$name = "アレン"; $lv = 1; $hp = 20; $mp = 5;
-
-// つぎのクエストでは、こうやって「ひとまとめ」にできる！
-$yuusha = ["name" => "アレン", "lv" => 1, "hp" => 20, "mp" => 5];
-echo $yuusha["name"] . " のステータスを ひとまとめに したよ";
-    </script></php-run>
-    <p>この <code>[ ... ]</code> が<b>配列</b>。キャラクターの情報をきれいに整理できます。
-    （いまは <code>[]</code> や <code>=&gt;</code> が読めなくて<b>まったく問題なし</b>。次のクエストでゆっくりやります。「こんなのが あるんだ」だけでOK！）</p>
-
     <h2>まとめ ＆ 仕上げのクエスト</h2>
-    <ul>
+    <point-box title="このクエストのまとめ">
       <li>画面に出すのは <code>echo "文字";</code>（最後に <code>;</code>）</li>
-      <li>変数は <code>$名前 = 値;</code> で覚えさせ、何度でも呼び出せる（文字は <code>"&nbsp;"</code>、数はそのまま）</li>
+      <li>変数は <code>$名前 = 値;</code> で覚えさせ、何度でも呼び出せる・あとで変えられる（文字は <code>"&nbsp;"</code>、数はそのまま）</li>
       <li>文字をつなぐのは <code>.</code></li>
-    </ul>
+    </point-box>
     <p><b>仕上げのクエスト：</b><code>$name = "アレン"</code>、<code>$lv = 5</code> を使って、<code>アレン (レベル5)</code> と表示しよう。
-    （<b>「アレン」と「(」の間は半角スペース1つ</b>。かっこは <b>半角の <code>(</code> <code>)</code></b>（全角の（）はダメ）。<code>"&nbsp;(レベル"</code> のように、かっこは <code>"&nbsp;"</code> の中に入れるよ。）</p>
+    （「アレン」と「(」の間は半角スペース1つ。かっこは<b>半角の <code>(</code> <code>)</code></b>。<code>"&nbsp;(レベル"</code> のように、かっこは <code>"&nbsp;"</code> の中に入れます。）</p>
     <php-exercise expected="アレン (レベル5)" solution='<?php
 $name = "アレン";
 $lv = 5;
@@ -201,6 +175,10 @@ $lv = 5;
 // $name と " (レベル" と $lv と ")" を . でつないで出そう
       </script>
     </php-exercise>
+
+    <char-talk speaker="slime" side="right" avatar="../assets/img/a01/char/slime.png">
+      やったね！変数、つかえるようになったぷに〜
+    </char-talk>
 
     <course-nav manifest="../course.json"></course-nav>
   </article>
