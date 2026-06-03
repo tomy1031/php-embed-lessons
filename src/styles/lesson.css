@@ -20,6 +20,7 @@
 .php-exercise .reset { background: #475569; color: #fff; }
 .php-exercise .solution { background: #b45309; color: #fff; }
 .php-exercise button[hidden] { display: none; }
+.php-exercise .note { font-size: .8rem; color: #9399b2; }
 .php-exercise .result.pass { color: #16a34a; font-weight: 700; }
 .php-exercise .result.fail { color: #dc2626; font-weight: 700; }
 @media (max-width: 640px) {

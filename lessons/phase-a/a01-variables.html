@@ -44,7 +44,7 @@ echo "CodeQuest へ ようこそ！";
 echo "ぼうけんの しょ を ひらいた";
       </script></php-run>
 
-      <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを かきかえる</code> を <b>ぜんぶ消して</b>、<code>たびに でる</code> と打ってみよう。（「たびに」と「でる」の間は <b>半角スペース1つ</b>。採点は<b>文字がぴったり同じ</b>かどうかで決まります。）</p>
+      <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを かきかえる</code> を <b>ぜんぶ消して</b>、<code>たびに でる</code> と打ってみよう。（「たびに」と「でる」の間は <b>半角スペース1つ</b>。採点は<b>文字の中身がぴったり同じ</b>かどうかで決まります（前後の空白は気にしなくてOK）。）</p>
       <php-exercise expected="たびに でる" solution='<?php
 echo "たびに でる";'>
         <script type="text/php">
@@ -70,7 +70,7 @@ echo $name . "の ぼうけんが はじまる！";
       <p>ポイントは3つ：</p>
       <ul>
         <li><code>$name</code> … PHPの変数は <code>$</code>（ドル）で始めます。これが「覚えさせる名前」。</li>
-        <li><code>=</code> … 右の値を、その名前に覚えさせる（代入）。「ひとしい」ではありません。</li>
+        <li><code>=</code> … 右の値を、その名前に<b>入れる</b>こと（むずかしく言うと「代入」）。算数の「ひとしい」ではありません。</li>
         <li><code>.</code> … 文字どうしを<b>つなぐ</b>記号（足し算の <code>+</code> ではありません）。</li>
       </ul>
 
@@ -93,7 +93,8 @@ echo $name . "よ、よくぞ来た！";
         </script>
       </php-exercise>
 
-      <p><b>クエスト：</b><code>$name</code> に <code>アレン</code> を覚えさせて、<code>アレンの ぼうけんが はじまる！</code> と表示しよう。</p>
+      <p>（ここからは、例として主人公の名前を <b>アレン</b> として進めます。）</p>
+      <p><b>クエスト：</b><code>$name</code> に <code>アレン</code> を覚えさせて、<code>アレンの ぼうけんが はじまる！</code> と表示しよう。（改行 <code>\n</code> は今回は使いません。1行だけでOK。）</p>
       <php-exercise expected="アレンの ぼうけんが はじまる！" solution='<?php
 $name = "アレン";
 echo $name . "の ぼうけんが はじまる！";'>
@@ -137,7 +138,8 @@ $lv = 5;
       </php-exercise>
 
       <h2>ステップ4 — つなげて、ひと目で分かるステータスに</h2>
-      <p><code>.</code> はいくつでもつなげます。文字の部分にスペースや記号を入れて、見やすく整えましょう。</p>
+      <p><code>.</code> は<b>いくつでも</b>つなげます（2個でも4個でも、やることは同じ）。文字の部分にスペースや記号を入れて、見やすく整えましょう。
+      ヒント：<code>"&nbsp;HP"</code> のように、<code>"&nbsp;"</code> の中には スペースや <code>(</code> などの記号も <b>そのまま</b>入れられます（記号も「ただの文字」として表示されます）。</p>
       <php-run><script type="text/php">
 $name = "アレン";
 $lv = 1;
@@ -145,7 +147,7 @@ $hp = 20;
 echo $name . " レベル" . $lv . " HP" . $hp;
       </script></php-run>
 
-      <p><b>クエスト：</b><code>$name = "アレン"</code> と <code>$hp = 20</code> を使って、<code>アレン HP20</code> と表示しよう。</p>
+      <p><b>クエスト：</b><code>$name = "アレン"</code> と <code>$hp = 20</code> を使って、<code>アレン HP20</code> と表示しよう。（「アレン」と「HP20」の間は <b>半角スペース1つ</b>。）</p>
       <php-exercise expected="アレン HP20" solution='<?php
 $name = "アレン";
 $hp = 20;
@@ -160,7 +162,7 @@ $hp = 20;
 
     <div class="part real">
       <span class="tag">② じつは、実際のアプリも同じ ⚔️</span>
-      <p>変数は、ゲームだけのものではありません。買い物アプリでも、商品名や値段を変数に覚えさせて使います。題材がちがうだけで、しくみは<b>まったく同じ</b>です。</p>
+      <p><b>ここからは、現実のアプリの話。</b>変数は、ゲームだけのものではありません。買い物アプリでも、商品名や値段を変数に覚えさせて使います。題材がちがうだけで、しくみは<b>まったく同じ</b>です。</p>
       <php-run><script type="text/php">
 $product = "やくそう";
 $price = 50;
@@ -187,7 +189,8 @@ echo $yuusha["name"] . " のステータスを ひとまとめに したよ";
       <li>変数は <code>$名前 = 値;</code> で覚えさせ、何度でも呼び出せる（文字は <code>"&nbsp;"</code>、数はそのまま）</li>
       <li>文字をつなぐのは <code>.</code></li>
     </ul>
-    <p><b>仕上げのクエスト：</b><code>$name = "アレン"</code>、<code>$lv = 5</code> を使って、<code>アレン (レベル5)</code> と表示しよう。</p>
+    <p><b>仕上げのクエスト：</b><code>$name = "アレン"</code>、<code>$lv = 5</code> を使って、<code>アレン (レベル5)</code> と表示しよう。
+    （<b>「アレン」と「(」の間は半角スペース1つ</b>。かっこは <b>半角の <code>(</code> <code>)</code></b>（全角の（）はダメ）。<code>"&nbsp;(レベル"</code> のように、かっこは <code>"&nbsp;"</code> の中に入れるよ。）</p>
     <php-exercise expected="アレン (レベル5)" solution='<?php
 $name = "アレン";
 $lv = 5;

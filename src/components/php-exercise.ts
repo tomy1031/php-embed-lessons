@@ -40,6 +40,7 @@ export class PhpExercise extends HTMLElement {
   private render(): void {
     const layout = decideLayout(this.starter, this.getAttribute('layout') ?? 'split');
     const hasSolution = this.hasAttribute('solution');
+    const graded = this.hasAttribute('expected');
     this.classList.add('php-exercise', `layout-${layout}`);
     this.innerHTML =
       '<div class="panes">' +
@@ -52,6 +53,8 @@ export class PhpExercise extends HTMLElement {
       // 答えを最初から見せない：solution ボタンは初回実行までは hidden。
       (hasSolution ? '<button class="solution" type="button" hidden>👁 答えを見る</button>' : '') +
       '<span class="result" role="status"></span>' +
+      // 採点なし（expected未指定）の問題は、その旨を明示して「壊れてる？」を防ぐ。
+      (graded ? '' : '<span class="note">この問題は採点なし（自由に ためそう）</span>') +
       '</div>';
     (this.querySelector('.run') as HTMLButtonElement).addEventListener('click', () => void this.runCode());
     (this.querySelector('.reset') as HTMLButtonElement).addEventListener('click', () => this.reset());
