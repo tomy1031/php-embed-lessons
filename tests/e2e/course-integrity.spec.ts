@@ -15,8 +15,13 @@ for (const p of pages) {
     expect(n).toBeGreaterThan(0); // 採点演習が必ずある
     for (let i = 0; i < n; i++) {
       const ex = exs.nth(i);
-      await ex.locator('button.solution').click(); // 模範解答を入れる
-      await ex.locator('button.run').click();       // 実行
+      const solution = ex.locator('button.solution');
+      // 答えは初期非表示。まず一度実行してから「答えを見る」が出る。
+      await expect(solution).toBeHidden();
+      await ex.locator('button.run').click();        // 1回目の実行 → solution 出現
+      await expect(solution).toBeVisible({ timeout: 60_000 });
+      await solution.click();                         // 模範解答を入れる
+      await ex.locator('button.run').click();         // 2回目の実行
       await expect(ex.locator('.result')).toContainText('正解', { timeout: 60_000 });
     }
   });

@@ -71,12 +71,21 @@ describe('<php-exercise>', () => {
     expect(el.getEditorValue()).toBe('SAVED');
   });
 
-  it('solution指定時のみ模範解答ボタンが出て反映される', () => {
+  it('solution指定時は初期非表示、初回実行後に出て反映される', async () => {
     configure({ executor: new FakeExecutor({ stdout: '' }) });
     const el = mount('solution="ans"', 'START');
     const btn = el.querySelector('.solution') as HTMLButtonElement;
     expect(btn).not.toBeNull();
+    expect(btn.hidden).toBe(true); // 答えを最初から見せない
+    await el.runCode(); // 一度実行すると出現
+    expect(btn.hidden).toBe(false);
     btn.click();
     expect(el.getEditorValue()).toContain('ans');
+  });
+
+  it('solution未指定なら模範解答ボタンは出ない', () => {
+    configure({ executor: new FakeExecutor({ stdout: '' }) });
+    const el = mount('expected="1"', 'START');
+    expect(el.querySelector('.solution')).toBeNull();
   });
 });

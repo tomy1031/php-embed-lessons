@@ -3,41 +3,86 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RPGで学ぶ フルスタックPHP</title>
+  <title>CodeQuest — 物語で学ぶ PHP の冒険</title>
   <style>
-    body { font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-      max-width: 760px; margin: 0 auto; padding: 2rem 1.2rem; line-height: 1.75; color: #1f2430; }
-    h1 { margin-bottom: .2rem; }
-    .lead { color: #51607a; margin-top: 0; }
-    h2 { margin-top: 1.8rem; }
-    ul.lessons { list-style: none; padding: 0; }
-    ul.lessons li { margin: .5rem 0; }
-    ul.lessons a { display: block; text-decoration: none; color: #1f2430;
-      border: 1px solid #e0e4ec; border-radius: 8px; padding: .7rem 1rem; }
-    ul.lessons a:hover { border-color: #2563eb; background: #f7faff; }
-    .num { color: #2563eb; font-weight: 700; margin-right: .5rem; }
-    .demo a { color: #51607a; }
-    footer { margin-top: 2rem; font-size: .85rem; color: #8a94a6; }
+    :root{
+      --bg-deep:#171228; --panel:#f4e7c9; --ink:#3a2a18;
+      --frame:#c9a24b; --frame-dark:#7a5a1e; --magic:#6f5bd0; --battle:#b4452f;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; padding:2.5rem 1.2rem 4rem;
+      background:radial-gradient(1200px 600px at 50% -10%, #2a2150 0%, var(--bg-deep) 60%) fixed;
+      color:#efe7d2; line-height:1.8;
+      font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+    }
+    .wrap{max-width:760px;margin:0 auto}
+    .crest{text-align:center;margin-bottom:.4rem;color:var(--frame);letter-spacing:.4em;font-size:.8rem}
+    h1{
+      text-align:center;margin:.1rem 0 .2rem;font-size:2.5rem;letter-spacing:.06em;
+      font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+      color:#f6e4b0;text-shadow:0 2px 0 #2a1d0a,0 0 18px rgba(201,162,75,.45);
+    }
+    .tagline{text-align:center;color:#cdbf9a;margin:.2rem 0 1.6rem}
+    .cta{display:block;width:max-content;margin:0 auto 2.4rem;text-decoration:none;
+      background:linear-gradient(#e9c466,#c9a24b);color:#3a2a08;font-weight:800;
+      padding:.7rem 1.6rem;border-radius:10px;border:2px solid var(--frame-dark);
+      box-shadow:0 4px 0 var(--frame-dark);letter-spacing:.05em}
+    .cta:hover{filter:brightness(1.05)}
+    .chapter{margin:2rem 0 .8rem;display:flex;align-items:center;gap:.6rem;
+      color:#f0d99a;font-family:"Hiragino Mincho ProN",serif;font-size:1.2rem}
+    .chapter .line{flex:1;height:1px;background:linear-gradient(90deg,var(--frame),transparent)}
+    .chapter .soon{font-size:.72rem;color:#9a8fb5;border:1px solid #4a4068;border-radius:999px;padding:.05rem .6rem;letter-spacing:.08em}
+    ul.quests{list-style:none;padding:0;margin:0}
+    ul.quests li{margin:.6rem 0}
+    a.quest{display:flex;gap:.9rem;align-items:flex-start;text-decoration:none;color:var(--ink);
+      background:linear-gradient(#f7ecd2,#efe0bd);border:2px solid var(--frame);
+      border-radius:10px;padding:.8rem 1rem;box-shadow:0 2px 0 var(--frame-dark);transition:.12s}
+    a.quest:hover{transform:translateY(-1px);box-shadow:0 4px 0 var(--frame-dark);border-color:#e3bf6a}
+    .badge{flex:none;width:2.4rem;height:2.4rem;border-radius:8px;display:grid;place-items:center;
+      background:var(--magic);color:#fff;font-weight:800;font-size:.85rem;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+    .quest .ttl{font-weight:800;display:block}
+    .quest .hook{display:block;font-size:.9rem;color:#6a543a}
+    .demo a.quest{background:#211b34;border-color:#3a3258;color:#cfc6e6;box-shadow:none}
+    .demo .badge{background:#4a4068}
+    .demo .quest .hook{color:#9a8fb5}
+    footer{text-align:center;margin-top:2.5rem;color:#8a7fa6;font-size:.8rem}
   </style>
 </head>
 <body>
-  <h1>RPGで学ぶ フルスタックPHP</h1>
-  <p class="lead">勇者になった気分で、ブラウザの中だけでPHPを動かしながら学べます。インストール不要。</p>
+  <div class="wrap">
+    <div class="crest">❖ ＣＯＤＥ ＱＵＥＳＴ ❖</div>
+    <h1>CodeQuest</h1>
+    <p class="tagline">物語をすすめながら、PHP を身につける冒険の書。<br>インストール不要。ブラウザの中で、本当にコードが動きます。</p>
+    <a class="cta" href="./phase-a/a01-variables.html">▶ ぼうけんを はじめる</a>
 
-  <h2>Phase A：RPGで基礎をつかむ</h2>
-  <ul class="lessons">
-    <li><a href="./phase-a/a01-variables.html"><span class="num">A01</span>変数とデータ型</a></li>
-    <li><a href="./phase-a/a02-operators.html"><span class="num">A02</span>演算子と比較（==/===）</a></li>
-    <li><a href="./phase-a/a03-control.html"><span class="num">A03</span>制御構文</a></li>
-  </ul>
+    <div class="chapter">第一章 — 基礎をつかむ<span class="line"></span></div>
+    <ul class="quests">
+      <li><a class="quest" href="./phase-a/a01-variables.html">
+        <span class="badge">A01</span>
+        <span><span class="ttl">はじまりの村 — 名乗りを上げよ</span>
+        <span class="hook">画面に文字を出し、自分の名前で物語を進める（変数）</span></span></a></li>
+      <li><div class="quest" style="opacity:.55;cursor:default">
+        <span class="badge">A02</span>
+        <span><span class="ttl">ダメージの見きわめ — <code>==</code> と <code>===</code> <span class="soon">準備中</span></span>
+        <span class="hook">計算と比較で、戦いの結果を判定する</span></span></div></li>
+      <li><div class="quest" style="opacity:.55;cursor:default">
+        <span class="badge">A03</span>
+        <span><span class="ttl">分かれ道 — もし○○なら／くりかえし <span class="soon">準備中</span></span>
+        <span class="hook">条件と繰り返しで、物語を分岐させる</span></span></div></li>
+    </ul>
 
-  <h2 class="demo">参考：初期デモ</h2>
-  <ul class="lessons demo">
-    <li><a href="./01-variables.html">デモ: 変数</a></li>
-    <li><a href="./02-arrays.html">デモ: 配列</a></li>
-    <li><a href="./03-functions.html">デモ: 関数</a></li>
-  </ul>
+    <div class="chapter">第二章 — 実システムへ<span class="line"></span><span class="soon">準備中</span></div>
+    <div class="chapter">第三章 — フルスタックの旅<span class="line"></span><span class="soon">準備中</span></div>
 
-  <footer>RPGで学ぶ フルスタックPHP — php-wasm で動作</footer>
+    <div class="chapter" style="margin-top:2.4rem;font-size:1rem;color:#9a8fb5">参考：初期デモ<span class="line"></span></div>
+    <ul class="quests demo">
+      <li><a class="quest" href="./01-variables.html"><span class="badge">D</span><span><span class="ttl">デモ：変数</span></span></a></li>
+      <li><a class="quest" href="./02-arrays.html"><span class="badge">D</span><span><span class="ttl">デモ：配列</span></span></a></li>
+      <li><a class="quest" href="./03-functions.html"><span class="badge">D</span><span><span class="ttl">デモ：関数</span></span></a></li>
+    </ul>
+
+    <footer>CodeQuest — php-wasm でブラウザ内実行</footer>
+  </div>
 </body>
 </html>
