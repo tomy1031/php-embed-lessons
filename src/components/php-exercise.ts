@@ -45,7 +45,7 @@ export class PhpExercise extends HTMLElement {
     this.innerHTML =
       '<div class="panes">' +
       '<div class="editor-host"></div>' +
-      '<div class="output" aria-live="polite"></div>' +
+      '<div class="output" aria-live="polite" hidden></div>' +
       '</div>' +
       '<div class="controls">' +
       '<button class="run" type="button">▶ 実行</button>' +
@@ -81,9 +81,10 @@ export class PhpExercise extends HTMLElement {
     const r = this.querySelector('.result')!;
     r.textContent = '';
     r.className = 'result';
-    const o = this.querySelector('.output')!;
+    const o = this.querySelector('.output') as HTMLElement;
     o.textContent = '';
     o.classList.remove('has-error');
+    o.hidden = true;
   }
 
   async runCode(): Promise<void> {
@@ -92,8 +93,9 @@ export class PhpExercise extends HTMLElement {
     if (sol) sol.hidden = false;
 
     const code = this.editor.getValue();
-    const out = this.querySelector('.output')!;
+    const out = this.querySelector('.output') as HTMLElement;
     const result = this.querySelector('.result')!;
+    out.hidden = false;
     out.textContent = '実行中…';
     out.classList.remove('has-error');
     result.textContent = '';

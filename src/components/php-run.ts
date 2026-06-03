@@ -24,13 +24,14 @@ export class PhpRun extends HTMLElement {
         ? '<span class="run-hint">← この「▶ 実行」ボタンを 押すと、プログラムが 実行されます</span>'
         : '') +
       '</div>' +
-      '<div class="output" aria-live="polite"><span class="idle">▶ 実行 を押すと、ここに けっかが 出ます</span></div>';
+      '<div class="output" aria-live="polite" hidden></div>';
     this.querySelector('code')!.textContent = this.code; // コードはtextContentで安全に
     (this.querySelector('.run') as HTMLButtonElement).addEventListener('click', () => void this.execute());
   }
 
   async execute(): Promise<void> {
-    const out = this.querySelector('.output')!;
+    const out = this.querySelector('.output') as HTMLElement;
+    out.hidden = false;
     out.textContent = '実行中…';
     out.classList.remove('has-error');
     try {

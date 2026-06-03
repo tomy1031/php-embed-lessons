@@ -273,6 +273,21 @@ body.rpg nav.course-nav a.toc {
   font-weight: 400;
 }
 
+/* point-box（羊皮紙＋金枠） */
+body.rpg .lesson .point-box {
+  background: #fbf2dd; border: 1px solid var(--frame); border-left: 5px solid var(--accent-magic);
+  border-radius: 6px; color: var(--ink);
+}
+body.rpg .lesson .point-box .point-head { color: var(--frame-dark); }
+
+/* char-talk（吹き出し＋金縁アイコン） */
+body.rpg .lesson .char-talk .avatar { border-color: var(--frame); box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+body.rpg .lesson .char-talk .bubble {
+  background: #fff8e8; border: 1px solid var(--frame); border-radius: 12px; color: var(--ink);
+}
+body.rpg .lesson .char-talk.side-left .bubble { border-top-left-radius: 2px; }
+body.rpg .lesson .char-talk.side-right .bubble { border-top-right-radius: 2px; }
+
 /* 動きを抑えたいユーザーへの配慮 */
 @media (prefers-reduced-motion: reduce) {
   body.rpg .php-exercise .result.pass,

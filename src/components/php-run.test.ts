@@ -35,6 +35,16 @@ describe('<php-run>', () => {
     expect(el.classList.contains('layout-split')).toBe(true);
   });
 
+  it('実行前は出力が隠れていて、実行後に表示される', async () => {
+    configure({ executor: new FakeExecutor({ stdout: 'やあ' }) });
+    const el = mount('<script type="text/php">echo "x";</script>');
+    const out = el.querySelector('.output') as HTMLElement;
+    expect(out.hidden).toBe(true);
+    await el.execute();
+    expect(out.hidden).toBe(false);
+    expect(out.textContent).toBe('やあ');
+  });
+
   it('stderrはエラー表示になる', async () => {
     configure({ executor: new FakeExecutor({ stdout: '', stderr: 'Parse error' }) });
     const el = mount('<script type="text/php">bad</script>');
