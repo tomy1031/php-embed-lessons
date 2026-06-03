@@ -43,10 +43,14 @@ test('01-variables リセットでスターターに戻る', async ({ page }) =>
   expect(text).not.toContain('999');
 });
 
-test('01-variables 模範解答ボタンで答えが入る', async ({ page }) => {
+test('01-variables 答えを見るボタンは実行後に出て答えが入る', async ({ page }) => {
   await page.goto('/lessons/01-variables.html');
   const ex = page.locator('php-exercise');
-  await ex.locator('button.solution').click();
+  const solution = ex.locator('button.solution');
+  await expect(solution).toBeHidden(); // 初期は非表示（答えを最初から見せない）
+  await ex.locator('button.run').click(); // 一度実行すると出現
+  await expect(solution).toBeVisible({ timeout: T });
+  await solution.click();
   await ex.locator('button.run').click();
   await expect(ex.locator('.result')).toContainText('正解', { timeout: T });
 });

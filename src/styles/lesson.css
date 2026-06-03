@@ -10,6 +10,9 @@
 .php-exercise .controls { display: flex; gap: .5rem; align-items: center; padding: .5rem .8rem; background: #181825; }
 .php-exercise button { cursor: pointer; border: 0; border-radius: 4px; padding: .25rem .8rem; }
 .php-exercise .run { background: #2563eb; color: #fff; }
+.php-exercise .reset { background: #475569; color: #fff; }
+.php-exercise .solution { background: #b45309; color: #fff; }
+.php-exercise button[hidden] { display: none; }
 .php-exercise .result.pass { color: #16a34a; font-weight: 700; }
 .php-exercise .result.fail { color: #dc2626; font-weight: 700; }
 @media (max-width: 640px) {

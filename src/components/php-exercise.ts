@@ -41,7 +41,8 @@ export class PhpExercise extends HTMLElement {
       '<div class="controls">' +
       '<button class="run" type="button">▶ 実行</button>' +
       '<button class="reset" type="button">↺ スターターに戻す</button>' +
-      (hasSolution ? '<button class="solution" type="button">👁 模範解答</button>' : '') +
+      // 答えを最初から見せない：solution ボタンは初回実行までは hidden。
+      (hasSolution ? '<button class="solution" type="button" hidden>👁 答えを見る</button>' : '') +
       '<span class="result" role="status"></span>' +
       '</div>';
     (this.querySelector('.run') as HTMLButtonElement).addEventListener('click', () => void this.runCode());
@@ -75,6 +76,10 @@ export class PhpExercise extends HTMLElement {
   }
 
   async runCode(): Promise<void> {
+    // 一度でも実行したら「答えを見る」ボタンを出す（solution 指定時のみ存在）。
+    const sol = this.querySelector('.solution') as HTMLButtonElement | null;
+    if (sol) sol.hidden = false;
+
     const code = this.editor.getValue();
     const out = this.querySelector('.output')!;
     const result = this.querySelector('.result')!;

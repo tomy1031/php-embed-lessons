@@ -187,12 +187,33 @@ body.rpg .php-exercise {
   border-radius: 6px;
   box-shadow: 0 4px 14px rgba(0,0,0,.4);
 }
+/* 演習エディタは明るい羊皮紙系に（暗すぎ問題を解消・コントラストAA以上） */
+body.rpg .php-exercise .editor-host {
+  background: #fbf3df;
+  color: #2b2113;
+  padding: 0;
+}
+body.rpg .php-exercise .editor-host .cm-editor {
+  background: #fbf3df;
+}
+body.rpg .php-exercise .editor-host .cm-scroller {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+}
 body.rpg .php-exercise .controls {
   background: #2a1411;
   border-top: 1px solid var(--frame-dark);
 }
 body.rpg .php-exercise .run {
   background: var(--accent-battle);
+  box-shadow: 0 0 0 1px var(--frame) inset;
+}
+body.rpg .php-exercise .reset {
+  background: #5a4a2e;
+  box-shadow: 0 0 0 1px var(--frame) inset;
+}
+/* 「答えを見る」は実行後にだけ現れる賢者の助け。控えめな金枠 */
+body.rpg .php-exercise .solution {
+  background: #7a5a1e;
   box-shadow: 0 0 0 1px var(--frame) inset;
 }
 /* 正解：金色に発光＋達成演出（1回のみ） */
