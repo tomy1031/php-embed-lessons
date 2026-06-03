@@ -162,24 +162,32 @@ body.rpg .lesson figure img {
 }
 body.rpg .lesson figcaption { color: var(--ink-soft); }
 
-/* php-run：ダークコンソール＋▶じっこう バー */
+/* php-run：ダークコンソール＋本物の「▶ 実行」ボタン（自動実行はしない） */
 body.rpg .php-run {
   border: 2px solid var(--frame-dark);
   border-radius: 6px;
   box-shadow: 0 4px 14px rgba(0,0,0,.4);
 }
-body.rpg .php-run::before {
-  content: "▶ じっこう";
-  display: block;
-  font-family: ui-monospace, Menlo, Consolas, monospace;
-  font-size: .72rem;
-  letter-spacing: .1em;
-  color: #cdd6f4;
-  background: #15131f;
-  padding: .25rem .8rem;
-  border-bottom: 1px solid #2a2740;
-}
+/* コードは暗背景の上に「明るい文字」で確実に読めるように（暗×暗を解消）。
+   body.rpg .lesson code（羊皮紙用の濃色インライン）よりも高い詳細度で上書きする。 */
 body.rpg .php-run .code { background: #1e1b2e; }
+body.rpg .php-run .code code {
+  color: #ece7ff;
+  background: none;
+  padding: 0;
+}
+/* 操作バー＋実行ボタン（魔法色） */
+body.rpg .php-run .controls {
+  background: #15131f;
+  border-top: 1px solid #2a2740;
+}
+body.rpg .php-run .controls button.run {
+  background: var(--accent-magic);
+  color: #fff;
+  box-shadow: 0 0 0 1px var(--frame) inset;
+  font-weight: 700;
+}
+body.rpg .php-run .run-hint { color: #f0d99a; font-weight: 700; }
 
 /* php-exercise：バトル枠（赤金） */
 body.rpg .php-exercise {

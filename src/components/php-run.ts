@@ -4,37 +4,35 @@ import { decideLayout } from './layout';
 
 export class PhpRun extends HTMLElement {
   private code = '';
-  private executed = false;
 
   connectedCallback(): void {
     this.code = extractPhp(this);
-    this.renderShell();
-    this.observe();
+    this.render();
   }
 
-  private renderShell(): void {
+  private render(): void {
     const layout = decideLayout(this.code, this.getAttribute('layout'));
     this.classList.add('php-run', `layout-${layout}`);
+    // すべてのコードに「▶ 実行」ボタンを置く（自動実行しない）。
+    // 学習者が自分のタイミングで押せるようにし、「動いたの？」という疑問を残さない。
+    const isFirst = document.querySelector('php-run') === this; // ページ最初の実行ボタン
     this.innerHTML =
       '<pre class="code"><code></code></pre>' +
-      '<div class="output" aria-live="polite"><span class="pending">…</span></div>';
+      '<div class="controls">' +
+      '<button class="run" type="button">▶ 実行</button>' +
+      (isFirst
+        ? '<span class="run-hint">← この「▶ 実行」ボタンを 押すと、プログラムが 実行されます</span>'
+        : '') +
+      '</div>' +
+      '<div class="output" aria-live="polite"><span class="idle">▶ 実行 を押すと、ここに けっかが 出ます</span></div>';
     this.querySelector('code')!.textContent = this.code; // コードはtextContentで安全に
-  }
-
-  private observe(): void {
-    if (typeof IntersectionObserver === 'undefined') { void this.execute(); return; }
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) { io.disconnect(); void this.execute(); }
-      }
-    });
-    io.observe(this);
+    (this.querySelector('.run') as HTMLButtonElement).addEventListener('click', () => void this.execute());
   }
 
   async execute(): Promise<void> {
-    if (this.executed) return;
-    this.executed = true;
     const out = this.querySelector('.output')!;
+    out.textContent = '実行中…';
+    out.classList.remove('has-error');
     try {
       const res = await getExecutor().run(this.code);
       out.textContent = res.stderr ? `${res.stdout}${res.stdout ? '\n' : ''}${res.stderr}` : res.stdout;
@@ -43,5 +41,7 @@ export class PhpRun extends HTMLElement {
       out.textContent = String(err);
       out.classList.add('has-error');
     }
+    // 初回の説明ヒントは、一度押したら役目を終えるので消す。
+    this.querySelector('.run-hint')?.remove();
   }
 }

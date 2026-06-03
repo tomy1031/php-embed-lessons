@@ -2,8 +2,9 @@ import { test, expect } from '@playwright/test';
 
 test('php-run が実ブラウザで実行され出力が出る', async ({ page }) => {
   await page.goto('/lessons/01-variables.html');
-  const firstRun = page.locator('php-run .output').first();
-  await expect(firstRun).toHaveText('こんにちは', { timeout: 60_000 });
+  const firstRun = page.locator('php-run').first();
+  await firstRun.locator('button.run').click(); // 自動実行はしない：ボタンを押して実行
+  await expect(firstRun.locator('.output')).toHaveText('こんにちは', { timeout: 60_000 });
 });
 
 test('php-exercise: 正答すると正解が出る', async ({ page }) => {

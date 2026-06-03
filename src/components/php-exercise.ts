@@ -48,7 +48,7 @@ export class PhpExercise extends HTMLElement {
       '</div>' +
       '<div class="controls">' +
       '<button class="run" type="button">▶ 実行</button>' +
-      '<button class="reset" type="button">↺ スターターに戻す</button>' +
+      '<button class="reset" type="button">↺ 最初に戻す</button>' +
       // 答えを最初から見せない：solution ボタンは初回実行までは hidden。
       (hasSolution ? '<button class="solution" type="button" hidden>👁 答えを見る</button>' : '') +
       '<span class="result" role="status"></span>' +
