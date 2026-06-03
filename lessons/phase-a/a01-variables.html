@@ -59,7 +59,7 @@ echo "CodeQuestへ ようこそ！";
 echo "冒険の書を ひらいた";
       </script></php-run>
 
-      <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを書きかえる</code> を消して、<code>旅に出る</code> と打ってみよう。採点は文字の中身が同じかどうかで決まります（前後の空白は気にしなくてOK）。</p>
+      <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを書きかえる</code> を消して、<code>旅に出る</code> と打ってみよう。採点は文字の中身が同じかどうかで決まります（文の最初と最後の空白は気にしません）。</p>
       <php-exercise expected="旅に出る" solution='<?php
 echo "旅に出る";'>
         <script type="text/php">
@@ -76,6 +76,7 @@ echo "ここを書きかえる";
 echo "勇者よ、よくぞ来た！";
 echo "勇者の冒険が始まる！";
       </script></php-run>
+      <p class="callout">📝 <code>echo</code> は<b>自動で改行しません</b>。だから2つの文がそのままつながって出ます（改行のやり方は、あとのレッスンで習います）。</p>
       <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
         そこで<b>変数</b>。一度だけ名前をつけて覚えさせれば、何度でも呼び出せます。
       </char-talk>
@@ -91,7 +92,7 @@ echo $name . "の冒険が始まる！";
         <li><code>.</code>（ドット） … 文字どうしを<b>つなぐ</b>記号（足し算の <code>+</code> ではありません）</li>
       </point-box>
 
-      <p><b>まずは値を変えてみよう：</b>下の <code>$name</code> の <code>"勇者"</code> を、あなたの好きな名前に書き換えて <b>▶ 実行</b>。表示が変わります。（この問題は採点なし。自由にどうぞ）</p>
+      <p><b>まずは値を変えてみよう：</b>下の <code>$name</code> の <code>"勇者"</code> を、あなたの好きな名前に書き換えて <b>▶ 実行</b>。表示が変わります。（この問題は採点なし。正解マークは出ませんが、下に文字が出ればOK！）</p>
       <php-exercise>
         <script type="text/php">
 $name = "勇者";
@@ -103,11 +104,11 @@ echo $name . "の冒険が始まる！";
         変数の良いところは、<b>あとから中身を変えられる</b>こと。レベルアップで数を書きかえてみましょう。
       </char-talk>
       <php-run><script type="text/php">
-$lv = 1;
-echo "いまのレベルは" . $lv;
+$level = 1;
+echo "いまのレベルは" . $level;
 
-$lv = 5;
-echo "レベルアップ！ いまはレベル" . $lv;
+$level = 5;
+echo "レベルアップ！ いまはレベル" . $level;
       </script></php-run>
 
       <p>（ここからは、例として名前を <b>アレン</b> として進めます。）</p>
@@ -125,9 +126,9 @@ $name = "アレン";
       <p>名前のような<b>文字</b>は <code>"&nbsp;"</code> で囲みますが、HPやレベルのような<b>数</b>は囲みません。覚えるのはこれだけ：文字は囲む、数は囲まない。</p>
       <php-run><script type="text/php">
 $name = "アレン";
-$lv = 5;
+$level = 5;
 $hp = 20;
-echo $name . " レベル" . $lv . " HP" . $hp;
+echo $name . " レベル" . $level . " HP" . $hp;
       </script></php-run>
       <point-box title="連結のヒント">
         <li><code>.</code> は<b>いくつでも</b>つなげる（2個でも4個でも同じ）</li>
@@ -163,16 +164,16 @@ echo $product . "は" . $price . "ゴールド";
       <li>変数は <code>$名前 = 値;</code> で覚えさせ、何度でも呼び出せる・あとで変えられる（文字は <code>"&nbsp;"</code>、数はそのまま）</li>
       <li>文字をつなぐのは <code>.</code></li>
     </point-box>
-    <p><b>仕上げのクエスト：</b><code>$name = "アレン"</code>、<code>$lv = 5</code> を使って、<code>アレン (レベル5)</code> と表示しよう。
+    <p><b>仕上げのクエスト：</b><code>$name = "アレン"</code>、<code>$level = 5</code> を使って、<code>アレン (レベル5)</code> と表示しよう。
     （「アレン」と「(」の間は半角スペース1つ。かっこは<b>半角の <code>(</code> <code>)</code></b>。<code>"&nbsp;(レベル"</code> のように、かっこは <code>"&nbsp;"</code> の中に入れます。）</p>
     <php-exercise expected="アレン (レベル5)" solution='<?php
 $name = "アレン";
-$lv = 5;
-echo $name . " (レベル" . $lv . ")";'>
+$level = 5;
+echo $name . " (レベル" . $level . ")";'>
       <script type="text/php">
 $name = "アレン";
-$lv = 5;
-// $name と " (レベル" と $lv と ")" を . でつないで出そう
+$level = 5;
+// $name と " (レベル" と $level と ")" を . でつないで出そう
       </script>
     </php-exercise>
 

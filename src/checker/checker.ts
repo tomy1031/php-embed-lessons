@@ -8,6 +8,9 @@ export interface CheckResult {
 export function normalize(s: string): string {
   return s
     .replace(/\r\n?/g, '\n')
+    // 全角スペースは半角スペースとして扱う：初学者は両者を目視で区別できず、
+    // 「合っているように見えるのに不正解」という理不尽な詰まりを生むため。
+    .replace(/　/g, ' ')
     .split('\n')
     .map((line) => line.replace(/[ \t]+$/g, ''))
     .join('\n')

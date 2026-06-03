@@ -12,6 +12,9 @@ describe('check', () => {
   it('exact: 不一致でfail', () => {
     expect(check('16', '15').pass).toBe(false);
   });
+  it('全角スペースは半角スペースとして扱う', () => {
+    expect(check('アレン　HP20', 'アレン HP20').pass).toBe(true);
+  });
   it('contains: 部分一致でpass', () => {
     expect(check('answer=15 ok', '15', 'contains').pass).toBe(true);
   });
