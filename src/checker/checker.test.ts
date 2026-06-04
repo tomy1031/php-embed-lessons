@@ -15,6 +15,9 @@ describe('check', () => {
   it('全角スペースは半角スペースとして扱う', () => {
     expect(check('アレン　HP20', 'アレン HP20').pass).toBe(true);
   });
+  it('全角コロンと半角コロンを同一視する', () => {
+    expect(check('ダメージ:7', 'ダメージ：7').pass).toBe(true);
+  });
   it('contains: 部分一致でpass', () => {
     expect(check('answer=15 ok', '15', 'contains').pass).toBe(true);
   });

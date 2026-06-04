@@ -88,6 +88,7 @@ $count = 3;
 echo $price;
         </script>
       </php-exercise>
+      <div class="dq-window">ぶきが かがやいた！ こうげき力 <b>360</b>！</div>
       </div>
 
       <h2>ステップ2 — ダメージを計算する（ひき算）</h2>
@@ -115,6 +116,7 @@ $def = 5;
 echo $atk;
         </script>
       </php-exercise>
+      <div class="dq-window">スライムに <b>7</b> の ダメージ！</div>
       </div>
 
       <h2>ステップ3 — 中身を増やす・減らす（<code>+=</code> <code>-=</code>）</h2>
@@ -149,10 +151,11 @@ $hp -= 5;
 echo "のこりHP" . $hp;
         </script>
       </php-exercise>
+      <div class="dq-window">やくそうを つかった！ HPが <b>18</b> に かいふく！</div>
       </div>
 
       <h2>ステップ4 — 1だけ増やす・減らす（<code>++</code> <code>--</code>）</h2>
-      <p>「1だけ増やす」は とても よく使うので、もっと短い書き方があります。<code>$level++;</code>（1ふやす）、<code>$level--;</code>（1へらす）。</p>
+      <p>「1だけ増やす」は とても よく使うので、もっと短い書き方があります。<code>$level++;</code>（1ふやす）、<code>$level--;</code>（1へらす）。<br><small>※ <code>++</code> を<b>インクリメント</b>、<code>--</code> を<b>デクリメント</b>と言います（プロっぽい用語。いまは覚えなくてOK）。</small></p>
       <php-run><script type="text/php">
 $level = 1;
 $level++;
@@ -173,6 +176,7 @@ $level = 4;
 echo "レベル" . $level;
         </script>
       </php-exercise>
+      <div class="dq-window">アレンは <b>レベル5</b> に あがった！</div>
       </div>
     </div>
 
@@ -185,6 +189,10 @@ $count = 3;
 $total = $price * $count;
 echo "合計" . $total . "円";
       </script></php-run>
+      <figure>
+        <img src="../assets/img/a02/real-shop.png" alt="買い物アプリの画面。カートに赤いりんごが3個、合計360円と表示" />
+        <figcaption>りんご120円 × 3個 ＝ 合計360円。買い物アプリの計算も、ゲームと同じ。</figcaption>
+      </figure>
     </div>
 
     <h2>まとめ</h2>
@@ -199,8 +207,14 @@ echo "合計" . $total . "円";
       さいごの試練。<b>計算</b>と、前回の<b>つなぐ（<code>.</code>）・改行（<code>\n</code>）</b>を全部つかうよ！
     </char-talk>
     <div class="quest">
-    <p><b>ボス戦（仕上げのクエスト）：</b><code>$atk = 12</code>、<code>$def = 5</code>、<code>$hp = 20</code> を使って、<b>ダメージ</b>（攻撃力−防御）と <b>のこりHP</b>（HP−ダメージ）を計算し、次の<b>2行</b>を出そう。</p>
-    <p class="callout">🎯 出したい結果（この2行）：<br><code>ダメージ：7</code><br><code>のこりHP：13</code><br><small>※ <code>：</code> は<b>全角コロン</b>。改行は <code>\n</code>（<code>\</code> の打ち方：Win＝<code>\</code>キー／Mac＝<code>option＋¥</code>）。</small></p>
+    <p><b>ボス戦（仕上げのクエスト）：</b><code>$atk = 12</code>、<code>$def = 5</code>、<code>$hp = 20</code> を使って、<b>ダメージ</b>と <b>のこりHP</b> を計算し、次の<b>2行</b>を出そう。</p>
+    <p class="callout">🎯 出したい結果（この2行）：<br><code>ダメージ：7</code><br><code>のこりHP：13</code></p>
+    <point-box title="やること（上から順に）">
+      <li>① ダメージは計算ずみ（<code>$damage</code> は 7）← 手を出さなくてOK</li>
+      <li>② <code>$hp</code> から <code>$damage</code> を <code>-=</code> で引く … <b>1行</b></li>
+      <li>③ <code>"ダメージ："</code>・<code>$damage</code>・<code>"\n"</code>・<code>"のこりHP："</code>・<code>$hp</code> を <code>.</code> でつないで <code>echo</code> … <b>1行</b></li>
+    </point-box>
+    <p><small>※ <code>：</code> は全角コロン（半角でもOK）。<code>\n</code> は改行（<code>\</code> の打ち方：Win＝<code>\</code>キー／Mac＝<code>option＋¥</code>）。</small></p>
     <php-exercise boss expected="ダメージ：7
 のこりHP：13" solution='<?php
 $atk = 12;
@@ -213,13 +227,15 @@ echo "ダメージ：" . $damage . "\n" . "のこりHP：" . $hp;'>
 $atk = 12;
 $def = 5;
 $hp = 20;
-$damage = $atk - $def;   // ① ダメージを計算ずみ（$damage は 7）
-// ② つぎの行で、$hp から $damage を -= で引こう（のこりHP）
+$damage = $atk - $def;   // ① 計算ずみ（$damage は 7）
+// ② HPを減らす（1行）↓
 
-// ③ そのつぎの行で、"ダメージ：" と $damage、"\n"、"のこりHP：" と $hp を . でつないで echo しよう
+// ③ 2行を表示する（1行）↓
 
+// クリア！
       </script>
     </php-exercise>
+    <div class="dq-window">ボスに <b>7</b> の ダメージ！ のこりHP <b>13</b>！ ……たおした！</div>
     </div>
 
     <char-talk speaker="slime" side="right" avatar="../assets/img/a01/char/slime.png">

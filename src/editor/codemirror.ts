@@ -68,7 +68,7 @@ export const codeMirrorFactory: EditorFactory = (host: HTMLElement, initial: str
       parent: host,
       state: EditorState.create({
         doc: initial,
-        extensions: [basicSetup, php(), lightTheme, syntaxHighlighting(highlightStyle), listener],
+        extensions: [basicSetup, php(), EditorView.lineWrapping, lightTheme, syntaxHighlighting(highlightStyle), listener],
       }),
     });
   })();
