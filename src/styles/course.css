@@ -78,7 +78,7 @@ body.rpg .lesson h1 {
   padding-bottom: .5rem;
 }
 body.rpg .lesson h1::before {
-  content: "❖ QUEST A-01 ❖";
+  content: attr(data-quest);
   display: block;
   font-size: .8rem;
   letter-spacing: .3em;

@@ -1,7 +1,7 @@
 {
   "lessons": [
     { "path": "phase-a/a01-variables.html", "title": "A01 変数とデータ型" },
-    { "path": "phase-a/a02-operators.html", "title": "A02 演算子と比較" },
+    { "path": "phase-a/a02-operators.html", "title": "A02 たたかいの森 — 計算で たたかえ" },
     { "path": "phase-a/a03-control.html",   "title": "A03 制御構文" }
   ]
 }

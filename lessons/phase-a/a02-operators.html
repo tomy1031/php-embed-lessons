@@ -3,97 +3,228 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>A02 演算子と比較（==/===） | RPGで学ぶPHP</title>
+  <title>A02 たたかいの森 — 計算で たたかえ | CodeQuest</title>
   <script type="module" src="/src/index.ts"></script>
 </head>
-<body>
+<body class="rpg">
   <article class="lesson">
-    <h1>A02 演算子と比較（==/===）</h1>
+    <h1 data-quest="❖ QUEST A-02 ❖">A02 たたかいの森 — 計算で たたかえ</h1>
+
     <figure>
-      <img src="../assets/img/a02/a02-battle.png" alt="戦闘でダメージを計算する場面" />
-      <figcaption>ダメージ計算と判定で「演算子」を使う</figcaption>
+      <img src="../assets/img/a02/a02-hero.png" alt="森でモンスターと向き合う勇者アレン。剣を構えている" />
+      <figcaption>森にモンスターが あらわれた！ ダメージは<b>計算</b>で決まる。</figcaption>
     </figure>
+
+    <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
+      モンスターだ！ どれくらい ダメージを あたえられるの？
+    </char-talk>
+    <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+      それは<b>計算</b>で きまります。プログラムは <code>+ - * /</code> で 計算ができる。今日は それで たたかいましょう。
+    </char-talk>
+
     <div class="goals">
-      <b>このレッスンのねらい</b>
+      <b>このクエストでできるようになること</b>
       <ul>
-        <li>四則演算と比較で判定ができる</li>
-        <li><code>==</code>（値だけ）と <code>===</code>（型も一致）の違いが分かる</li>
-        <li>三項演算子 <code>?:</code> と null合体 <code>??</code> を使える</li>
+        <li>数を計算する（<code>+</code> たす・<code>-</code> ひく・<code>*</code> かける・<code>/</code> わる）</li>
+        <li><b>ダメージ＝攻撃力−防御</b> のような計算ができる</li>
+        <li>変数の中身を増やす・減らす（<code>+=</code>、<code>++</code>）</li>
       </ul>
     </div>
 
     <div class="part">
-      <span class="tag">① RPGで概念</span>
-      <p>攻撃力から防御力を引いてダメージを出します。</p>
+      <span class="tag">① 計算をおぼえる 🔮</span>
+
+      <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+        まずは おさらい。コードの下の <b>▶ 実行</b> を押すと動くよ。前回の <code>変数</code> も そのまま使うからね。
+      </char-talk>
+
+      <h2>ステップ1 — 数を計算する</h2>
+      <p>計算につかう記号（演算子）は、算数とほとんど同じ。まずは下を <b>▶ 実行</b> して、結果を見てみよう。</p>
       <php-run><script type="text/php">
-$attack = 45;
-$defense = 12;
-echo "ダメージ: ", $attack - $defense;
+echo 12 + 8;
+      </script></php-run>
+      <point-box title="計算の記号">
+        <li><code>+</code> … たす　／　<code>-</code> … ひく</li>
+        <li><code>*</code> … かける（×のかわり）　／　<code>/</code> … わる（÷のかわり）</li>
+      </point-box>
+      <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
+        × じゃなくて <code>*</code>、÷ じゃなくて <code>/</code> なんだね。
+      </char-talk>
+
+      <p>もちろん、<b>変数の中身</b>どうしも計算できます。</p>
+      <php-run><script type="text/php">
+$atk = 12;
+$weapon = 8;
+echo $atk + $weapon;
       </script></php-run>
 
-      <p>ここが最重要。<code>==</code> は「値だけ」、<code>===</code> は「型も一致」を見ます。</p>
-      <php-run><script type="text/php">
-echo (5 == "5")  ? "==: 同じ"  : "==: 違う", "\n";   // 値だけ見る → 同じ
-echo (5 === "5") ? "===: 同じ" : "===: 違う", "\n";  // 型も見る → 違う
-      </script></php-run>
-
-      <p>判定の便利な書き方も覚えましょう。</p>
-      <php-run><script type="text/php">
-$hp = 0;
-echo ($hp <= 0) ? "戦闘不能" : "戦える", "\n";  // 三項演算子
-$nickname = null;
-echo $nickname ?? "名無しの戦士", "\n";          // null合体
-      </script></php-run>
-
-      <p><b>練習：</b>サイコロの目 <code>$roll = 100</code> が「ちょうど100（型も一致）」なら「クリティカル！」、違えば「通常」を出力しよう。</p>
-      <php-exercise expected="クリティカル！" solution='<?php
-$roll = 100;
-echo ($roll === 100) ? "クリティカル！" : "通常";'>
+      <div class="quest">
+      <p><b>クエスト：</b>下の <code>$weapon</code> の数を <code>15</code> に変えて、<b>▶ 実行</b>。合計（攻撃力＋武器）がどう変わるか見てみよう。（採点なし。数字が出ればOK）</p>
+      <php-exercise>
         <script type="text/php">
-$roll = 100;
-// $roll が === で 100 なら「クリティカル！」、違えば「通常」
+$atk = 12;
+$weapon = 8;
+echo $atk + $weapon;
         </script>
       </php-exercise>
+      </div>
+
+      <p>かけ算 <code>*</code> も同じように使えます。</p>
+      <php-run><script type="text/php">
+$price = 120;
+$count = 3;
+echo $price * $count;
+      </script></php-run>
+      <div class="quest">
+      <p><b>クエスト：</b><code>$price = 120</code> と <code>$count = 3</code> を <b>かけ算</b>して、<code>360</code> を出そう。下の <code>echo $price;</code> の <code>$price</code> のあとに <code> * $count</code> を足してね。</p>
+      <php-exercise expected="360" solution='<?php
+$price = 120;
+$count = 3;
+echo $price * $count;'>
+        <script type="text/php">
+$price = 120;
+$count = 3;
+// ↓ $price のあとに「 * $count」を足して、かけ算にしよう
+echo $price;
+        </script>
+      </php-exercise>
+      </div>
+
+      <h2>ステップ2 — ダメージを計算する（ひき算）</h2>
+      <p>戦いの基本は <b>ダメージ＝攻撃力 − 相手の防御</b>。ひき算 <code>-</code> で出せます。</p>
+      <figure>
+        <img src="../assets/img/a02/concept-attackdef.png" alt="剣で攻撃する勇者と盾で防御するモンスター。攻撃力から防御を引くとダメージになる" />
+        <figcaption>こうげき（剣）から あいての ぼうぎょ（盾）を ひくと、ダメージ。</figcaption>
+      </figure>
+      <php-run><script type="text/php">
+$atk = 12;
+$def = 5;
+echo $atk - $def;
+      </script></php-run>
+
+      <div class="quest">
+      <p><b>クエスト：</b><code>$atk = 12</code>、<code>$def = 5</code> を使って、ダメージ（攻撃力−防御）を出そう。下の <code>echo $atk;</code> の <code>$atk</code> のあとに <code> - $def</code> を足して、<code>7</code> と出してね。</p>
+      <php-exercise expected="7" solution='<?php
+$atk = 12;
+$def = 5;
+echo $atk - $def;'>
+        <script type="text/php">
+$atk = 12;
+$def = 5;
+// ↓ $atk のあとに「 - $def」を足して、ひき算にしよう
+echo $atk;
+        </script>
+      </php-exercise>
+      </div>
+
+      <h2>ステップ3 — 中身を増やす・減らす（<code>+=</code> <code>-=</code>）</h2>
+      <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
+        攻撃を受けて HP が減った！ どう書くの？
+      </char-talk>
+      <p>戦いでは HP が何度も減ります。毎回 <code>$hp = $hp - 7;</code> と <code>$hp</code> を2回書くのは大変で、打ち間違えやすい。そこで<b>短い書き方</b>：<code>$hp -= 7;</code>（今の <code>$hp</code> から 7 を引いて入れ直す）。</p>
+      <figure>
+        <img src="../assets/img/a02/concept-compound.png" alt="HPの宝箱の中身が攻撃で減り、回復で増える図" />
+        <figcaption><code>-=</code> は「今の中身から ひいて 入れ直す」。<code>+=</code> は「足して 入れ直す」。</figcaption>
+      </figure>
+      <php-run><script type="text/php">
+$hp = 20;
+$hp -= 7;
+echo "ダメージを受けた！ のこりHP" . $hp;
+      </script></php-run>
+      <point-box title="短い書き方（複合代入）">
+        <li><code>$hp -= 7;</code> は <code>$hp = $hp - 7;</code> と同じ（7 へらす）</li>
+        <li><code>$hp += 5;</code> は <code>$hp = $hp + 5;</code> と同じ（5 ふやす＝回復）</li>
+      </point-box>
+
+      <div class="quest">
+      <p><b>クエスト：</b>戦いの続きで、いま HP は 13。下のコードの <code>-=</code> を <code>+=</code> に直して<b>回復</b>させ、<code>のこりHP18</code> と表示しよう。（直すのは記号1つ！）</p>
+      <php-exercise expected="のこりHP18" solution='<?php
+$hp = 13;
+$hp += 5;
+echo "のこりHP" . $hp;'>
+        <script type="text/php">
+$hp = 13;
+// ↓ -= を += に直すと、回復して 18 になるよ
+$hp -= 5;
+echo "のこりHP" . $hp;
+        </script>
+      </php-exercise>
+      </div>
+
+      <h2>ステップ4 — 1だけ増やす・減らす（<code>++</code> <code>--</code>）</h2>
+      <p>「1だけ増やす」は とても よく使うので、もっと短い書き方があります。<code>$level++;</code>（1ふやす）、<code>$level--;</code>（1へらす）。</p>
+      <php-run><script type="text/php">
+$level = 1;
+$level++;
+echo "レベルアップ！ いまはレベル" . $level;
+      </script></php-run>
+
+      <div class="quest">
+      <p><b>クエスト：</b><code>$level = 4</code> を <code>++</code> で1あげて、<code>レベル5</code> と表示しよう。下の空いた行に <code>$level++;</code> を書いてね。</p>
+      <php-exercise expected="レベル5" solution='<?php
+$level = 4;
+$level++;
+echo "レベル" . $level;'>
+        <script type="text/php">
+$level = 4;
+// ↓ この下に $level++; を書こう
+
+
+echo "レベル" . $level;
+        </script>
+      </php-exercise>
+      </div>
     </div>
 
     <div class="part real">
-      <span class="tag">② 実システムでは</span>
-      <p>フォームから来る値は「文字列」です。<code>==</code> は思わぬ落とし穴になり、<code>===</code> が安全です。</p>
+      <span class="tag">② じつは、買い物アプリも同じ ⚔️</span>
+      <p><b>計算は現実のアプリでも大活躍。</b>買い物アプリの「合計金額」は <b>値段 × 個数</b> のかけ算。計算した結果を<b>変数に入れておく</b>と、あとで使いやすくなります。</p>
       <php-run><script type="text/php">
-$input = "0";  // フォームから来た文字列の "0"
-echo ($input == false) ? "空っぽ扱い" : "値あり", "\n"; // == の罠: "0" は false 扱い
-echo ($input === "")   ? "空" : "入力あり", "\n";        // === なら厳密
+$price = 120;
+$count = 3;
+$total = $price * $count;
+echo "合計" . $total . "円";
       </script></php-run>
-
-      <p><b>練習：</b>在庫 <code>$stock = 0</code> が「ちょうど0（型も一致）」なら「在庫なし」、それ以外は「在庫あり」を出力しよう。</p>
-      <php-exercise expected="在庫なし" solution='<?php
-$stock = 0;
-echo ($stock === 0) ? "在庫なし" : "在庫あり";'>
-        <script type="text/php">
-$stock = 0;
-// === を使って「在庫なし」/「在庫あり」を出力
-        </script>
-      </php-exercise>
     </div>
 
-    <h2>まとめ＆チェック</h2>
-    <ul>
-      <li><code>==</code> は値だけ、<code>===</code> は型も一致（基本は <code>===</code> を使う）</li>
-      <li><code>?:</code> で短い条件分岐、<code>??</code> で「無ければこれ」</li>
-    </ul>
-    <p class="callout">迷ったら <code>===</code>。<code>==</code> は <code>"0"</code> や <code>""</code> で予想外の結果になりがち。</p>
-    <p><b>チェック：</b>単価 <code>$price = 1000</code>、個数 <code>$qty = 3</code>。合計を出し、合計が 2000 以上なら 10% 引きした金額を出力しよう。</p>
-    <php-exercise expected="2700" solution='<?php
-$price = 1000;
-$qty = 3;
-$total = $price * $qty;
-echo ($total >= 2000) ? $total * 0.9 : $total;'>
+    <h2>まとめ</h2>
+    <point-box title="このクエストのまとめ">
+      <li>計算は <code>+ - * /</code>。変数の中身どうしも計算できる</li>
+      <li>増やす・減らすの短い書き方：<code>+=</code> <code>-=</code></li>
+      <li>1だけ増減：<code>++</code> <code>--</code></li>
+    </point-box>
+
+    <div class="boss-banner">👾　ボスが あらわれた！　👾</div>
+    <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+      さいごの試練。<b>計算</b>と、前回の<b>つなぐ（<code>.</code>）・改行（<code>\n</code>）</b>を全部つかうよ！
+    </char-talk>
+    <div class="quest">
+    <p><b>ボス戦（仕上げのクエスト）：</b><code>$atk = 12</code>、<code>$def = 5</code>、<code>$hp = 20</code> を使って、<b>ダメージ</b>（攻撃力−防御）と <b>のこりHP</b>（HP−ダメージ）を計算し、次の<b>2行</b>を出そう。</p>
+    <p class="callout">🎯 出したい結果（この2行）：<br><code>ダメージ：7</code><br><code>のこりHP：13</code><br><small>※ <code>：</code> は<b>全角コロン</b>。改行は <code>\n</code>（<code>\</code> の打ち方：Win＝<code>\</code>キー／Mac＝<code>option＋¥</code>）。</small></p>
+    <php-exercise boss expected="ダメージ：7
+のこりHP：13" solution='<?php
+$atk = 12;
+$def = 5;
+$hp = 20;
+$damage = $atk - $def;
+$hp -= $damage;
+echo "ダメージ：" . $damage . "\n" . "のこりHP：" . $hp;'>
       <script type="text/php">
-$price = 1000;
-$qty = 3;
-// 合計を出し、2000以上なら10%引きして出力
+$atk = 12;
+$def = 5;
+$hp = 20;
+$damage = $atk - $def;   // ① ダメージを計算ずみ（$damage は 7）
+// ② つぎの行で、$hp から $damage を -= で引こう（のこりHP）
+
+// ③ そのつぎの行で、"ダメージ：" と $damage、"\n"、"のこりHP：" と $hp を . でつないで echo しよう
+
       </script>
     </php-exercise>
+    </div>
+
+    <char-talk speaker="slime" side="right" avatar="../assets/img/a01/char/slime.png">
+      計算で たたかえるように なったぷに〜！
+    </char-talk>
 
     <course-nav manifest="../course.json"></course-nav>
   </article>
