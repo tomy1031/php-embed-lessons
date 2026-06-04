@@ -69,26 +69,26 @@ echo $atk + $weapon;
       </php-exercise>
       </div>
 
-      <p>かけ算 <code>*</code> も同じように使えます。</p>
+      <p>かけ算 <code>*</code> も同じように使えます。たとえば「<b>こうげき力 × 回数</b>」で、連続こうげきの合計ダメージが出せます。</p>
       <php-run><script type="text/php">
-$price = 120;
-$count = 3;
-echo $price * $count;
+$power = 120;
+$hits = 3;
+echo $power * $hits;
       </script></php-run>
       <div class="quest">
-      <p><b>クエスト：</b><code>$price = 120</code> と <code>$count = 3</code> を <b>かけ算</b>して、<code>360</code> を出そう。下の <code>echo $price;</code> の <code>$price</code> のあとに <code> * $count</code> を足してね。</p>
+      <p><b>クエスト：</b>こうげき力 <code>$power = 120</code> で <code>$hits = 3</code> 回こうげき。合計ダメージ <code>360</code> を出そう。下の <code>echo $power;</code> の <code>$power</code> のあとに <code> * $hits</code> を足してね。</p>
       <php-exercise expected="360" solution='<?php
-$price = 120;
-$count = 3;
-echo $price * $count;'>
+$power = 120;
+$hits = 3;
+echo $power * $hits;'>
         <script type="text/php">
-$price = 120;
-$count = 3;
-// ↓ $price のあとに「 * $count」を足して、かけ算にしよう
-echo $price;
+$power = 120;
+$hits = 3;
+// ↓ $power のあとに「 * $hits」を足して、かけ算にしよう
+echo $power;
         </script>
       </php-exercise>
-      <div class="dq-window">ぶきが かがやいた！ こうげき力 <b>360</b>！</div>
+      <div class="dq-window"><img class="dq-char" src="../assets/img/a01/char/allen.png" alt=""><span>3回こうげき！ 合計 <b>360</b> の ダメージ！</span></div>
       </div>
 
       <h2>ステップ2 — ダメージを計算する（ひき算）</h2>
@@ -116,7 +116,7 @@ $def = 5;
 echo $atk;
         </script>
       </php-exercise>
-      <div class="dq-window">スライムに <b>7</b> の ダメージ！</div>
+      <div class="dq-window"><img class="dq-char" src="../assets/img/a01/char/monster.png" alt=""><span>モンスターに <b>7</b> の ダメージ！</span></div>
       </div>
 
       <h2>ステップ3 — 中身を増やす・減らす（<code>+=</code> <code>-=</code>）</h2>
@@ -151,7 +151,7 @@ $hp -= 5;
 echo "のこりHP" . $hp;
         </script>
       </php-exercise>
-      <div class="dq-window">やくそうを つかった！ HPが <b>18</b> に かいふく！</div>
+      <div class="dq-window"><img class="dq-char" src="../assets/img/a01/char/allen.png" alt=""><span>やくそうを つかった！ HPが <b>18</b> に かいふく！</span></div>
       </div>
 
       <h2>ステップ4 — 1だけ増やす・減らす（<code>++</code> <code>--</code>）</h2>
@@ -176,7 +176,7 @@ $level = 4;
 echo "レベル" . $level;
         </script>
       </php-exercise>
-      <div class="dq-window">アレンは <b>レベル5</b> に あがった！</div>
+      <div class="dq-window"><img class="dq-char" src="../assets/img/a01/char/allen.png" alt=""><span>アレンは <b>レベル5</b> に あがった！</span></div>
       </div>
     </div>
 
@@ -235,7 +235,7 @@ $damage = $atk - $def;   // ① 計算ずみ（$damage は 7）
 // クリア！
       </script>
     </php-exercise>
-    <div class="dq-window">ボスに <b>7</b> の ダメージ！ のこりHP <b>13</b>！ ……たおした！</div>
+    <div class="dq-window"><img class="dq-char" src="../assets/img/a01/char/monster.png" alt=""><span>ボスに <b>7</b> の ダメージ！ のこりHP <b>13</b>！ ……まだ たおせない！</span></div>
     </div>
 
     <char-talk speaker="slime" side="right" avatar="../assets/img/a01/char/slime.png">
