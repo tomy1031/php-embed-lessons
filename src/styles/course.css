@@ -288,6 +288,24 @@ body.rpg .lesson .char-talk .bubble {
 body.rpg .lesson .char-talk.side-left .bubble { border-top-left-radius: 2px; }
 body.rpg .lesson .char-talk.side-right .bubble { border-top-right-radius: 2px; }
 
+/* 練習問題バッジ（クエストの札）：練習問題だと一目で分かるように */
+body.rpg .lesson .php-exercise .ex-head {
+  background: var(--accent-magic); color: #fff; font-weight: 700;
+  letter-spacing: .04em; box-shadow: 0 0 0 1px var(--frame) inset;
+}
+/* ボス戦：赤金で別格の見た目 */
+body.rpg .lesson .php-exercise.boss {
+  border-color: var(--accent-battle);
+  box-shadow: 0 0 0 2px var(--accent-battle), 0 6px 20px rgba(180,69,47,.5);
+}
+body.rpg .lesson .php-exercise.boss .ex-head { background: #8a1f1f; }
+body.rpg .lesson .boss-banner {
+  text-align: center; font-weight: 800; color: #ffd9a0;
+  background: linear-gradient(#3a1414, #5a1d1d); border: 2px solid var(--accent-battle);
+  border-radius: 8px; padding: .55rem; margin: 1.4rem 0 .4rem; letter-spacing: .12em;
+  box-shadow: 0 4px 16px rgba(0,0,0,.45);
+}
+
 /* 動きを抑えたいユーザーへの配慮 */
 @media (prefers-reduced-motion: reduce) {
   body.rpg .php-exercise .result.pass,

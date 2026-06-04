@@ -16,7 +16,7 @@
     </figure>
 
     <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
-      ようこそ、勇者よ。わたしは案内人のミラ。このページのコードは<b>本物</b>。ボタンを押すと、すぐ下で動きますよ。
+      ようこそ、勇者よ。わたしは案内人のミラ。このページの<b>コード（プログラム）</b>は本物。ボタンを押すと、すぐ下で動きますよ。
     </char-talk>
     <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
       コードって、むずかしそう…。ぼくにもできるかな？
@@ -30,7 +30,7 @@
       <ul>
         <li>画面に文字を出す（<code>echo</code>）</li>
         <li>名前をつけて値を覚えさせる（<b>変数</b>）</li>
-        <li>文字をつなげて、自分だけの物語を表示する</li>
+        <li>文字を <b>.（ドット）</b> でつなげて、自分だけの物語を表示する</li>
       </ul>
     </div>
 
@@ -48,15 +48,15 @@ echo "CodeQuestへ ようこそ！";
       </char-talk>
 
       <h2>ステップ1 — 画面に文字を出す（<code>echo</code>）</h2>
-      <p><code>echo</code>（エコー）は「画面に出す」命令です。</p>
+      <p><code>echo</code>（エコー）は「画面に出す」命令です。まずは下を <b>▶ 実行</b> して、何が出るか見てみましょう。</p>
+      <php-run><script type="text/php">
+echo "冒険の書を ひらいた";
+      </script></php-run>
       <point-box title="echo の覚えどころ">
         <li>出したい文字は <code>"&nbsp;"</code>（ダブルクオート）で囲む</li>
         <li>文の終わりに <code>;</code>（セミコロン）を付ける（文の終わりの「。」のようなもの。忘れると動きません）</li>
         <li><code>//</code> から行末は<b>メモ（コメント）</b>。コンピュータは読み飛ばします</li>
       </point-box>
-      <php-run><script type="text/php">
-echo "冒険の書を ひらいた";
-      </script></php-run>
 
       <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを書きかえる</code> を消して、<code>旅に出る</code> と打ってみよう。採点は文字の中身が同じかどうかで決まります（文の最初と最後の空白は気にしません）。</p>
       <p class="callout">🧙 ミラ：明るい入力欄の文字は、書き換えられます。書き換えたら <b>▶ 実行</b>。元に戻すときは <b>↺ 最初に戻す</b>（書いた内容は消えてやり直せます）。「答えを見る」は、一度 <b>▶ 実行</b> してから出てきます。</p>
@@ -150,7 +150,7 @@ echo "レベルアップ！ いまはレベル" . $level;
       </figure>
 
       <point-box title="連結のヒント">
-        <li><code>.</code> は<b>いくつでも</b>つなげる（2個でも4個でも同じ）</li>
+        <li><code>.</code> は<b>いくつでも</b>つなげられる（2個でも4個でも同じ）</li>
         <li><code>"&nbsp;HP"</code> のように、<code>"&nbsp;"</code> の中にはスペースや記号も<b>そのまま</b>入れられる</li>
       </point-box>
 
@@ -182,15 +182,20 @@ echo $product . "は" . $price . "円";
       </figure>
     </div>
 
-    <h2>まとめ ＆ 仕上げのクエスト</h2>
+    <h2>まとめ</h2>
     <point-box title="このクエストのまとめ">
       <li>画面に出すのは <code>echo "文字";</code>（最後に <code>;</code>）</li>
       <li>変数は <code>$名前 = 値;</code> で覚えさせ、何度でも呼び出せる・あとで変えられる（文字は <code>"&nbsp;"</code>、数はそのまま）</li>
       <li>文字をつなぐのは <code>.</code>（ドット）</li>
       <li><code>\n</code> は<b>改行</b>（行を変える合図）</li>
     </point-box>
-    <p><b>仕上げのクエスト：</b>下のコードの<b>最後の <code>$name</code> を <code>$level</code> に直して</b>、<code>アレン (レベル5)</code> と表示しよう。（かっこやスペースはもう入っています。直すのは変数1つだけ！）</p>
-    <php-exercise expected="アレン (レベル5)" solution='<?php
+
+    <div class="boss-banner">👾　ボスが あらわれた！　👾</div>
+    <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+      これが さいごの試練。ここを クリアすれば、きみは<b>変数マスター</b>だ！
+    </char-talk>
+    <p><b>ボス戦（仕上げのクエスト）：</b>下のコードの<b>最後の <code>$name</code> を <code>$level</code> に直して</b>、<code>アレン (レベル5)</code> と表示し、ボスに とどめを さそう！（かっこやスペースはもう入っています。直すのは変数1つだけ！）</p>
+    <php-exercise boss expected="アレン (レベル5)" solution='<?php
 $name = "アレン";
 $level = 5;
 echo $name . " (レベル" . $level . ")";'>

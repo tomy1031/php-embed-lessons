@@ -23,6 +23,10 @@
 .php-exercise .solution { background: #b45309; color: #fff; }
 .php-exercise button[hidden] { display: none; }
 .php-exercise .note { font-size: .8rem; color: #9399b2; }
+.php-exercise .ex-head { padding: .35rem .8rem; font-weight: 700; font-size: .85rem; background: #2563eb; color: #fff; }
+.php-exercise.boss .ex-head { background: #b4452f; }
+.boss-banner { text-align: center; font-weight: 800; padding: .5rem; margin: 1rem 0 .3rem;
+  background: #fdeaea; border: 1px solid #e8a; border-radius: 8px; letter-spacing: .08em; }
 .php-exercise .result.pass { color: #16a34a; font-weight: 700; }
 .php-exercise .result.fail { color: #dc2626; font-weight: 700; }
 /* ===== point-box ===== */
