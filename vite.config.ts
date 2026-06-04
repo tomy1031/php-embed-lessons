@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import { readdirSync, existsSync, copyFileSync, mkdirSync } from 'node:fs';
-import { resolve, relative } from 'node:path';
+import { resolve, relative, dirname } from 'node:path';
 
 const root = __dirname;
 const lessonsDir = resolve(root, 'lessons');
@@ -30,6 +30,21 @@ export default defineConfig({
         if (existsSync(src)) {
           mkdirSync(resolve(root, 'dist/lessons'), { recursive: true });
           copyFileSync(src, resolve(root, 'dist/lessons/course.json'));
+        }
+
+        // char/ 配下のキャラ画像は <char-talk avatar="..."> のリテラル参照のため、
+        // Vite のアセット変換（ハッシュ化）を経由しない。元の相対パスのまま dist にコピーする。
+        const assetsDir = resolve(root, 'lessons/assets');
+        if (existsSync(assetsDir)) {
+          for (const entry of readdirSync(assetsDir, { recursive: true }) as string[]) {
+            if (typeof entry !== 'string') continue;
+            const norm = '/' + entry.replace(/\\/g, '/');
+            if (!/\/char\/[^/]+\.(png|jpe?g|webp|svg|gif)$/i.test(norm)) continue;
+            const from = resolve(assetsDir, entry);
+            const to = resolve(root, 'dist/lessons/assets', entry);
+            mkdirSync(dirname(to), { recursive: true });
+            copyFileSync(from, to);
+          }
         }
       },
     },
