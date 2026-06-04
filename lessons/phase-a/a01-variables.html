@@ -46,7 +46,6 @@ echo "CodeQuestへ ようこそ！";
       <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
         あ、文字が出た！押すと動くんだ。
       </char-talk>
-      <p class="callout">🧙 ミラ：明るい入力欄の文字は書き換えられます。書き換えたら <b>▶ 実行</b>。元に戻すときは <b>↺ 最初に戻す</b>（書いた内容は消えてやり直せます）。「答えを見る」は一度 ▶ 実行 してから出てきます。</p>
 
       <h2>ステップ1 — 画面に文字を出す（<code>echo</code>）</h2>
       <p><code>echo</code>（エコー）は「画面に出す」命令です。</p>
@@ -60,6 +59,7 @@ echo "冒険の書を ひらいた";
       </script></php-run>
 
       <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを書きかえる</code> を消して、<code>旅に出る</code> と打ってみよう。採点は文字の中身が同じかどうかで決まります（文の最初と最後の空白は気にしません）。</p>
+      <p class="callout">🧙 ミラ：明るい入力欄の文字は、書き換えられます。書き換えたら <b>▶ 実行</b>。元に戻すときは <b>↺ 最初に戻す</b>（書いた内容は消えてやり直せます）。「答えを見る」は、一度 <b>▶ 実行</b> してから出てきます。</p>
       <php-exercise expected="旅に出る" solution='<?php
 echo "旅に出る";'>
         <script type="text/php">
@@ -76,7 +76,7 @@ echo "ここを書きかえる";
 echo "勇者よ、よくぞ来た！";
 echo "勇者の冒険が始まる！";
       </script></php-run>
-      <p class="callout">📝 <code>echo</code> は<b>自動で改行しません</b>。だから2つの文がそのままつながって出ます（改行のやり方は、あとのレッスンで習います）。</p>
+      <p class="callout">📝 <code>echo</code> は<b>自動で改行しません</b>。だから2つの文が、そのままつながって出ます。</p>
       <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
         そこで<b>変数</b>。一度だけ名前をつけて覚えさせれば、何度でも呼び出せます。
       </char-talk>
@@ -91,6 +91,15 @@ echo $name . "の冒険が始まる！";
         <li><code>=</code> … <b>右にあるものを、左の名前に入れる</b>合図（読むときは右→左）。「"勇者" を <code>$name</code> に入れる」。算数のイコール（左右が等しい）ではありません</li>
         <li><code>.</code>（ドット） … 言葉と言葉を<b>のりでくっつける</b>イメージ。「アレン」＋「の冒険」→「アレンの冒険」。小数点や句点「。」とは別物です</li>
       </point-box>
+
+      <figure>
+        <img src="../assets/img/a01/concept-assign.png" alt="名札のついた箱に値を入れ、その箱をいろいろな場所で使い回すイラスト" />
+        <figcaption><code>=</code> は「<b>一度 名前をつけて入れたら、どこでも何度でも使える</b>」。</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/a01/concept-glue.png" alt="スライムが2つの言葉のカードをのりでくっつけているイラスト" />
+        <figcaption><code>.</code> は、スライムが言葉と言葉を<b>のりでくっつける</b>イメージ。</figcaption>
+      </figure>
 
       <p><b>まずは値を変えてみよう：</b>下の <code>$name</code> の <code>"勇者"</code> を、あなたの好きな名前に書き換えて <b>▶ 実行</b>。表示が変わります。（この問題は採点なし。正解マークは出ませんが、下に文字が出ればOK！）</p>
       <php-exercise>
@@ -107,7 +116,10 @@ $name = "アレン";
 echo $name . "の冒険が始まる！";'>
         <script type="text/php">
 $name = "アレン";
-// $name と "の冒険が始まる！" を . でつないで出そう
+// ここから下の空いた行に echo を書こう ↓
+
+
+// ヒント： $name と "の冒険が始まる！" を . でつなぐ
         </script>
       </php-exercise>
 
@@ -125,12 +137,16 @@ echo $name . " レベル" . $level . " HP" . $hp;
       </char-talk>
       <php-run><script type="text/php">
 $level = 1;
-echo "いまのレベルは" . $level;
+echo "いまのレベルは" . $level . "\n";
 
 $level = 5;
 echo "レベルアップ！ いまはレベル" . $level;
       </script></php-run>
-      <p>同じ <code>$level</code> に新しい数を入れると、<b>古い中身（1）は消えて、新しい中身（5）に入れ替わります</b>。名前（<code>$level</code>）はそのまま、中身だけ交換です。</p>
+      <p>📝 文の終わりに <code>\n</code> を付けると、そこで<b>改行</b>できます（だから上は2行に分かれて出ます）。</p>
+      <figure>
+        <img src="../assets/img/a01/concept-levelup.png" alt="同じ名札のついた箱の中身が 1 から 5 に入れ替わるイラスト" />
+        <figcaption>同じ <code>$level</code> の<b>中身を入れ替え</b>。名札はそのまま、中身だけ 1 → 5。</figcaption>
+      </figure>
 
       <point-box title="連結のヒント">
         <li><code>.</code> は<b>いくつでも</b>つなげる（2個でも4個でも同じ）</li>
