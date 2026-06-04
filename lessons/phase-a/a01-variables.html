@@ -98,7 +98,7 @@ echo $name . "の冒険が始まる！";
       </figure>
       <figure>
         <img src="../assets/img/a01/concept-glue.png" alt="スライムが2つの言葉のカードをのりでくっつけているイラスト" />
-        <figcaption><code>.</code> は、スライムが言葉と言葉を<b>のりでくっつける</b>イメージ。</figcaption>
+        <figcaption><code>.</code> は、言葉と言葉を<b>のりでくっつける</b>イメージ。</figcaption>
       </figure>
 
       <p><b>まずは値を変えてみよう：</b>下の <code>$name</code> の <code>"勇者"</code> を、あなたの好きな名前に書き換えて <b>▶ 実行</b>。表示が変わります。（この問題は採点なし。正解マークは出ませんが、下に文字が出ればOK！）</p>
@@ -142,7 +142,8 @@ echo "いまのレベルは" . $level . "\n";
 $level = 5;
 echo "レベルアップ！ いまはレベル" . $level;
       </script></php-run>
-      <p>📝 文の終わりに <code>\n</code> を付けると、そこで<b>改行</b>できます（だから上は2行に分かれて出ます）。</p>
+      <p>📝 文の終わりに <code>\n</code> を付けると、そこで<b>改行</b>できます（だから上は2行に分かれて出ます）。<br>
+      <b>「\」（バックスラッシュ）の打ち方：</b>Windows は <code>\</code> キー（キーボード右下の「ろ」／「¥」キー）。Mac は <code>option（⌥）</code>＋<code>¥</code>（画面に「¥」と出ても、コードでは同じ意味です）。</p>
       <figure>
         <img src="../assets/img/a01/concept-levelup.png" alt="同じ名札のついた箱の中身が 1 から 5 に入れ替わるイラスト" />
         <figcaption>同じ <code>$level</code> の<b>中身を入れ替え</b>。名札はそのまま、中身だけ 1 → 5。</figcaption>
@@ -175,13 +176,18 @@ $product = "りんご";
 $price = 120;
 echo $product . "は" . $price . "円";
       </script></php-run>
+      <figure>
+        <img src="../assets/img/a01/real-apple.png" alt="買い物アプリの画面で、りんごが120円で売られているイラスト" />
+        <figcaption>買い物アプリでも、商品名（りんご）や値段（120円）を変数で扱う。仕組みはゲームと同じ。</figcaption>
+      </figure>
     </div>
 
     <h2>まとめ ＆ 仕上げのクエスト</h2>
     <point-box title="このクエストのまとめ">
       <li>画面に出すのは <code>echo "文字";</code>（最後に <code>;</code>）</li>
       <li>変数は <code>$名前 = 値;</code> で覚えさせ、何度でも呼び出せる・あとで変えられる（文字は <code>"&nbsp;"</code>、数はそのまま）</li>
-      <li>文字をつなぐのは <code>.</code></li>
+      <li>文字をつなぐのは <code>.</code>（ドット）</li>
+      <li><code>\n</code> は<b>改行</b>（行を変える合図）</li>
     </point-box>
     <p><b>仕上げのクエスト：</b>下のコードの<b>最後の <code>$name</code> を <code>$level</code> に直して</b>、<code>アレン (レベル5)</code> と表示しよう。（かっこやスペースはもう入っています。直すのは変数1つだけ！）</p>
     <php-exercise expected="アレン (レベル5)" solution='<?php
@@ -196,6 +202,10 @@ echo $name . " (レベル" . $name . ")";
       </script>
     </php-exercise>
 
+    <figure>
+      <img src="../assets/img/a01/allen-levelup.png" alt="レベル5になって少し強くなった見習い勇者アレンのイラスト" />
+      <figcaption>アレン、レベル5に成長！ 変数が使えるようになった。</figcaption>
+    </figure>
     <char-talk speaker="slime" side="right" avatar="../assets/img/a01/char/slime.png">
       やったね！変数、つかえるようになったぷに〜
     </char-talk>
