@@ -198,21 +198,27 @@ echo $product . "は" . $price . "円";
       <li><code>\n</code> は<b>改行</b>（行を変える合図）</li>
     </point-box>
 
-    <div class="boss-banner">👾 ボスが あらわれた！</div>
+    <div class="boss-banner">👾　ボスが あらわれた！　👾</div>
     <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
-      これが さいごの試練。ここを クリアすれば、きみは<b>変数マスター</b>だ！
+      これが さいごの試練。ここまで習った <b>変数・つなぐ（<code>.</code>）・改行（<code>\n</code>）</b> を全部つかうよ。クリアすれば、きみは<b>変数マスター</b>だ！
     </char-talk>
     <div class="quest">
-    <p><b>ボス戦（仕上げのクエスト）：</b>下のコードの<b>最後の <code>$name</code> を <code>$level</code> に直して</b>、<code>アレン (レベル5)</code> と表示し、ボスに とどめを さそう！（かっこやスペースはもう入っています。直すのは変数1つだけ！）</p>
-    <php-exercise boss expected="アレン (レベル5)" solution='<?php
+    <p><b>ボス戦（仕上げのクエスト）：</b><code>$name = "アレン"</code> と <code>$level = 5</code> を使って、次の<b>2行</b>を <code>echo</code> しよう。</p>
+    <p class="callout">🎯 出したい結果（この2行）：<br><code>名前：アレン</code><br><code>level：5</code><br><small>※ <code>：</code> は<b>全角コロン</b>。行を変えるところは <code>\n</code> を使う。</small></p>
+    <php-exercise boss expected="名前：アレン
+level：5" solution='<?php
 $name = "アレン";
 $level = 5;
-echo $name . " (レベル" . $level . ")";'>
+echo "名前：" . $name . "\n" . "level：" . $level;'>
       <script type="text/php">
 $name = "アレン";
 $level = 5;
-// ↓ 最後の $name を $level に直すと「アレン (レベル5)」になるよ
-echo $name . " (レベル" . $name . ")";
+// 下の2行を出力しよう（：は全角コロン、改行は \n）
+//   名前：アレン
+//   level：5
+
+
+// ↑ の空いた行に echo を書こう（"名前：" . $name . "\n" . ...）
       </script>
     </php-exercise>
     </div>
