@@ -52,7 +52,7 @@ echo "CodeQuestへ ようこそ！";
       <p><code>echo</code>（エコー）は「画面に出す」命令です。</p>
       <point-box title="echo の覚えどころ">
         <li>出したい文字は <code>"&nbsp;"</code>（ダブルクオート）で囲む</li>
-        <li>文の終わりに <code>;</code>（セミコロン）を付ける</li>
+        <li>文の終わりに <code>;</code>（セミコロン）を付ける（文の終わりの「。」のようなもの。忘れると動きません）</li>
         <li><code>//</code> から行末は<b>メモ（コメント）</b>。コンピュータは読み飛ばします</li>
       </point-box>
       <php-run><script type="text/php">
@@ -88,8 +88,8 @@ echo $name . "の冒険が始まる！";
 
       <point-box title="変数のポイント">
         <li><code>$name</code> … 変数は <code>$</code>（ドル）で始める。これが「覚えさせる名前」</li>
-        <li><code>=</code> … 右の値を、その名前に<b>入れる</b>こと（むずかしく言うと「代入」）。算数の「ひとしい」ではありません</li>
-        <li><code>.</code>（ドット） … 文字どうしを<b>つなぐ</b>記号（足し算の <code>+</code> ではありません）</li>
+        <li><code>=</code> … <b>右にあるものを、左の名前に入れる</b>合図（読むときは右→左）。「"勇者" を <code>$name</code> に入れる」。算数のイコール（左右が等しい）ではありません</li>
+        <li><code>.</code>（ドット） … 言葉と言葉を<b>のりでくっつける</b>イメージ。「アレン」＋「の冒険」→「アレンの冒険」。小数点や句点「。」とは別物です</li>
       </point-box>
 
       <p><b>まずは値を変えてみよう：</b>下の <code>$name</code> の <code>"勇者"</code> を、あなたの好きな名前に書き換えて <b>▶ 実行</b>。表示が変わります。（この問題は採点なし。正解マークは出ませんが、下に文字が出ればOK！）</p>
@@ -99,17 +99,6 @@ $name = "勇者";
 echo $name . "の冒険が始まる！";
         </script>
       </php-exercise>
-
-      <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
-        変数の良いところは、<b>あとから中身を変えられる</b>こと。レベルアップで数を書きかえてみましょう。
-      </char-talk>
-      <php-run><script type="text/php">
-$level = 1;
-echo "いまのレベルは" . $level;
-
-$level = 5;
-echo "レベルアップ！ いまはレベル" . $level;
-      </script></php-run>
 
       <p>（ここからは、例として名前を <b>アレン</b> として進めます。）</p>
       <p><b>クエスト：</b><code>$name</code> に <code>アレン</code> を入れて、<code>アレンの冒険が始まる！</code> と表示しよう。</p>
@@ -130,12 +119,25 @@ $level = 5;
 $hp = 20;
 echo $name . " レベル" . $level . " HP" . $hp;
       </script></php-run>
+
+      <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
+        変数の良いところは、<b>あとから中身を変えられる</b>こと。レベルアップしてみましょう。
+      </char-talk>
+      <php-run><script type="text/php">
+$level = 1;
+echo "いまのレベルは" . $level;
+
+$level = 5;
+echo "レベルアップ！ いまはレベル" . $level;
+      </script></php-run>
+      <p>同じ <code>$level</code> に新しい数を入れると、<b>古い中身（1）は消えて、新しい中身（5）に入れ替わります</b>。名前（<code>$level</code>）はそのまま、中身だけ交換です。</p>
+
       <point-box title="連結のヒント">
         <li><code>.</code> は<b>いくつでも</b>つなげる（2個でも4個でも同じ）</li>
         <li><code>"&nbsp;HP"</code> のように、<code>"&nbsp;"</code> の中にはスペースや記号も<b>そのまま</b>入れられる</li>
       </point-box>
 
-      <p><b>クエスト：</b><code>$name = "アレン"</code> と <code>$hp = 20</code> を使って、<code>アレン HP20</code> と表示しよう。（「アレン」と「HP20」の間は半角スペース1つ。）</p>
+      <p><b>クエスト：</b>下のコードの<b>最後の <code>$name</code> を <code>$hp</code> に直して</b>、<code>アレン HP20</code> と表示しよう。（スペースや記号はもう入っています。直すのは変数1つだけ！）</p>
       <php-exercise expected="アレン HP20" solution='<?php
 $name = "アレン";
 $hp = 20;
@@ -143,7 +145,8 @@ echo $name . " HP" . $hp;'>
         <script type="text/php">
 $name = "アレン";
 $hp = 20;
-// $name と " HP" と $hp を . でつないで出そう
+// ↓ 最後の $name を $hp に直すと「アレン HP20」になるよ
+echo $name . " HP" . $name;
         </script>
       </php-exercise>
     </div>
@@ -152,9 +155,9 @@ $hp = 20;
       <span class="tag">② じつは、実際のアプリも同じ ⚔️</span>
       <p><b>ここからは現実のアプリの話。</b>変数はゲームだけのものではありません。買い物アプリでも、商品名や値段を変数に覚えさせて使います。題材が違うだけで、仕組みは<b>まったく同じ</b>です。</p>
       <php-run><script type="text/php">
-$product = "やくそう";
-$price = 50;
-echo $product . "は" . $price . "ゴールド";
+$product = "りんご";
+$price = 120;
+echo $product . "は" . $price . "円";
       </script></php-run>
     </div>
 
@@ -164,8 +167,7 @@ echo $product . "は" . $price . "ゴールド";
       <li>変数は <code>$名前 = 値;</code> で覚えさせ、何度でも呼び出せる・あとで変えられる（文字は <code>"&nbsp;"</code>、数はそのまま）</li>
       <li>文字をつなぐのは <code>.</code></li>
     </point-box>
-    <p><b>仕上げのクエスト：</b><code>$name = "アレン"</code>、<code>$level = 5</code> を使って、<code>アレン (レベル5)</code> と表示しよう。
-    （「アレン」と「(」の間は半角スペース1つ。かっこは<b>半角の <code>(</code> <code>)</code></b>。<code>"&nbsp;(レベル"</code> のように、かっこは <code>"&nbsp;"</code> の中に入れます。）</p>
+    <p><b>仕上げのクエスト：</b>下のコードの<b>最後の <code>$name</code> を <code>$level</code> に直して</b>、<code>アレン (レベル5)</code> と表示しよう。（かっこやスペースはもう入っています。直すのは変数1つだけ！）</p>
     <php-exercise expected="アレン (レベル5)" solution='<?php
 $name = "アレン";
 $level = 5;
@@ -173,7 +175,8 @@ echo $name . " (レベル" . $level . ")";'>
       <script type="text/php">
 $name = "アレン";
 $level = 5;
-// $name と " (レベル" と $level と ")" を . でつないで出そう
+// ↓ 最後の $name を $level に直すと「アレン (レベル5)」になるよ
+echo $name . " (レベル" . $name . ")";
       </script>
     </php-exercise>
 
