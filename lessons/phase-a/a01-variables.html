@@ -58,8 +58,8 @@ echo "冒険の書を ひらいた";
         <li><code>//</code> から行末は<b>メモ（コメント）</b>。コンピュータは読み飛ばします</li>
       </point-box>
 
-      <p><b>やってみよう：</b><code>"&nbsp;"</code> の中の <code>ここを書きかえる</code> を消して、<code>旅に出る</code> と打ってみよう。採点は文字の中身が同じかどうかで決まります（文の最初と最後の空白は気にしません）。</p>
-      <p class="callout">🧙 ミラ：明るい入力欄の文字は、書き換えられます。書き換えたら <b>▶ 実行</b>。元に戻すときは <b>↺ 最初に戻す</b>（書いた内容は消えてやり直せます）。「答えを見る」は、一度 <b>▶ 実行</b> してから出てきます。</p>
+      <div class="quest">
+      <p><b>クエスト：</b><code>"&nbsp;"</code> の中の <code>ここを書きかえる</code> を消して、<code>旅に出る</code> と打ってみよう。採点は文字の中身が同じかどうかで決まります（文の最初と最後の空白は気にしません）。</p>
       <php-exercise expected="旅に出る" solution='<?php
 echo "旅に出る";'>
         <script type="text/php">
@@ -67,6 +67,8 @@ echo "旅に出る";'>
 echo "ここを書きかえる";
         </script>
       </php-exercise>
+      </div>
+      <p class="callout">🧙 ミラ：明るい入力欄（ソースコードを書く所）の文字は、書き換えられます。書き換えたら <b>▶ 実行</b>。元に戻すときは <b>↺ 最初に戻す</b>（書いた内容は消えてやり直せます）。「答えを見る」は、一度 <b>▶ 実行</b> してから出てきます。</p>
 
       <h2>ステップ2 — 名前をつけて覚えさせる（変数）</h2>
       <char-talk speaker="allen" side="right" avatar="../assets/img/a01/char/allen.png">
@@ -101,6 +103,7 @@ echo $name . "の冒険が始まる！";
         <figcaption><code>.</code> は、言葉と言葉を<b>のりでくっつける</b>イメージ。</figcaption>
       </figure>
 
+      <div class="quest">
       <p><b>まずは値を変えてみよう：</b>下の <code>$name</code> の <code>"勇者"</code> を、あなたの好きな名前に書き換えて <b>▶ 実行</b>。表示が変わります。（この問題は採点なし。正解マークは出ませんが、下に文字が出ればOK！）</p>
       <php-exercise>
         <script type="text/php">
@@ -108,8 +111,10 @@ $name = "勇者";
 echo $name . "の冒険が始まる！";
         </script>
       </php-exercise>
+      </div>
 
       <p>（ここからは、例として名前を <b>アレン</b> として進めます。）</p>
+      <div class="quest">
       <p><b>クエスト：</b><code>$name</code> に <code>アレン</code> を入れて、<code>アレンの冒険が始まる！</code> と表示しよう。</p>
       <php-exercise expected="アレンの冒険が始まる！" solution='<?php
 $name = "アレン";
@@ -122,6 +127,7 @@ $name = "アレン";
 // ヒント： $name と "の冒険が始まる！" を . でつなぐ
         </script>
       </php-exercise>
+      </div>
 
       <h2>ステップ3 — 数とステータス、そして連結</h2>
       <p>名前のような<b>文字</b>は <code>"&nbsp;"</code> で囲みますが、HPやレベルのような<b>数</b>は囲みません。覚えるのはこれだけ：文字は囲む、数は囲まない。</p>
@@ -154,6 +160,7 @@ echo "レベルアップ！ いまはレベル" . $level;
         <li><code>"&nbsp;HP"</code> のように、<code>"&nbsp;"</code> の中にはスペースや記号も<b>そのまま</b>入れられる</li>
       </point-box>
 
+      <div class="quest">
       <p><b>クエスト：</b>下のコードの<b>最後の <code>$name</code> を <code>$hp</code> に直して</b>、<code>アレン HP20</code> と表示しよう。（スペースや記号はもう入っています。直すのは変数1つだけ！）</p>
       <php-exercise expected="アレン HP20" solution='<?php
 $name = "アレン";
@@ -166,6 +173,7 @@ $hp = 20;
 echo $name . " HP" . $name;
         </script>
       </php-exercise>
+      </div>
     </div>
 
     <div class="part real">
@@ -190,10 +198,11 @@ echo $product . "は" . $price . "円";
       <li><code>\n</code> は<b>改行</b>（行を変える合図）</li>
     </point-box>
 
-    <div class="boss-banner">👾　ボスが あらわれた！　👾</div>
+    <div class="boss-banner">👾 ボスが あらわれた！</div>
     <char-talk speaker="mira" side="left" avatar="../assets/img/a01/char/mira.png">
       これが さいごの試練。ここを クリアすれば、きみは<b>変数マスター</b>だ！
     </char-talk>
+    <div class="quest">
     <p><b>ボス戦（仕上げのクエスト）：</b>下のコードの<b>最後の <code>$name</code> を <code>$level</code> に直して</b>、<code>アレン (レベル5)</code> と表示し、ボスに とどめを さそう！（かっこやスペースはもう入っています。直すのは変数1つだけ！）</p>
     <php-exercise boss expected="アレン (レベル5)" solution='<?php
 $name = "アレン";
@@ -206,6 +215,7 @@ $level = 5;
 echo $name . " (レベル" . $name . ")";
       </script>
     </php-exercise>
+    </div>
 
     <figure>
       <img src="../assets/img/a01/allen-levelup.png" alt="レベル5になって少し強くなった見習い勇者アレンのイラスト" />

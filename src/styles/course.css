@@ -306,6 +306,15 @@ body.rpg .lesson .boss-banner {
   box-shadow: 0 4px 16px rgba(0,0,0,.45);
 }
 
+/* クエストのエリア境界（羊皮紙に金の破線枠）：練習問題のまとまりを明確に */
+body.rpg .lesson .quest {
+  border: 2px dashed var(--frame);
+  border-radius: 12px;
+  background: rgba(201,162,75,.07);
+  padding: .2rem 1rem 1rem;
+  margin: 1.4rem 0;
+}
+
 /* 動きを抑えたいユーザーへの配慮 */
 @media (prefers-reduced-motion: reduce) {
   body.rpg .php-exercise .result.pass,

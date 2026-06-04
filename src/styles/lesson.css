@@ -27,6 +27,9 @@
 .php-exercise.boss .ex-head { background: #b4452f; }
 .boss-banner { text-align: center; font-weight: 800; padding: .5rem; margin: 1rem 0 .3rem;
   background: #fdeaea; border: 1px solid #e8a; border-radius: 8px; letter-spacing: .08em; }
+/* クエストのエリア境界：説明＋エディタを1つの「クエスト枠」としてまとめる */
+.quest { border: 2px dashed #c3b27a; border-radius: 12px; padding: .2rem 1rem 1rem; margin: 1.2rem 0; }
+.quest > p:first-child { margin-top: .8rem; }
 .php-exercise .result.pass { color: #16a34a; font-weight: 700; }
 .php-exercise .result.fail { color: #dc2626; font-weight: 700; }
 /* ===== point-box ===== */
